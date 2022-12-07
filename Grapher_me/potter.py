@@ -154,7 +154,6 @@ class Graph_frame:
             colour_code += r.choice(self.hex_list)
         return colour_code
 
-
 if __name__ == "__main__":
     graph_frame = tk.Tk()
     gr = Graph_frame(graph_frame)

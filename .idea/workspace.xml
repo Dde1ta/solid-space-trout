@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="added inputer file">
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="added buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/inputer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/inputer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grapher_me/potter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/potter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670323309949</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added buttons">
+      <created>1670381962589</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670381962589</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,6 +90,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="the code is now read able" />
     <MESSAGE value="added inputer file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added inputer file" />
+    <MESSAGE value="added buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="added buttons" />
   </component>
 </project>
