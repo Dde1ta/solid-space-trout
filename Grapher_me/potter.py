@@ -17,6 +17,12 @@ class Graph_frame:
         self.graph_canvas.create_line(0, 500, 1000, 500, width=2, fill ="white") #X_axis
         # list of the hex char. for random colour genration
         self.hex_list = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f']
+        self.show_string = ''
+        
+        self.graph_frame.place(x= 0,y =0 )
+        self.input_frame = tk.Frame(master, height=580, width=920, bg="black")
+        self.objects(self.input_frame)
+        self.Equation_list = []
         self.y_axis_values()
         self.x_axis_values()
         self.vertical_grid()
