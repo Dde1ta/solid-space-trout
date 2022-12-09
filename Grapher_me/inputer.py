@@ -2,18 +2,18 @@ import tkinter as tk
 from potter import Graph_frame
 
 
-class Inputer_frame:
+class Inputer_frame(Graph_frame):
     def __init__(self,master):
         self.show_string = ''
         self.master = master
+        self.graph_frame.place(x= 0,y =0 )
+        self.graph_canvas.pack()
         self.input_frame = tk.Frame(master, height=580, width=920, bg="black")
         self.objects(self.input_frame)
         self.Equation_list = []
-        self.graph = Graph_frame(master)
-
-
     def objects(self,frame):
-        self.equation_label = tk.Label(frame,textvariable=self.show_string).place(x=0, y=0,width=920,height=80)
+        self.equation_label = tk.Label(frame)
+        self.equation_label.place(x=0, y=0,width=920,height=80)
         self.botton1 = tk.Button(frame, text=1,command=lambda :self.number_botton_pressed(self.botton1))
         self.botton1.place(x=0, y=180,width=230,height=100)
         self.botton2 = tk.Button(frame, text=2,command=lambda :self.number_botton_pressed(self.botton2))
@@ -55,33 +55,33 @@ class Inputer_frame:
     def number_botton_pressed(self,botton):
         self.Equation_list.append(botton["text"])
         self.show_string += str(botton["text"])
-        self.input_frame.update()
+        self.equation_label.config(text = self.show_string)
     def power_botton_pressed(self):
         self.Equation_list.append("power")
         self.show_string += "**"
+        self.equation_label.config(text=self.show_string)
     def divide_botton_pressed(self):
         self.Equation_list.append("divide")
         self.show_string += "/"
+        self.equation_label.config(text=self.show_string)
     def multiply_botton_pressed(self):
         self.Equation_list.append("multiply")
         self.show_string += "*"
+        self.equation_label.config(text=self.show_string)
     def add_botton_pressed(self):
         self.Equation_list.append("add")
         self.show_string += "+"
+        self.equation_label.config(text=self.show_string)
     def subtract_botton_pressed(self):
         self.Equation_list.append("subtract")
         self.show_string += "-"
+        self.equation_label.config(text=self.show_string)
     def x_botton_pressed(self):
         self.Equation_list.append("x")
         self.show_string += "x"
+        self.equation_label.config(text=self.show_string)
     def polt_botton_pressed(self):
-        self.graph.plot(self.Equation_list)
+
+        self.plot(self.Equation_list)
         self.Equation_list = []
-
-if __name__ == "__main__":
-    master = tk.Tk()
-    inputerr = Inputer_frame(master)
-    inputerr.input_frame.pack()
-    master.mainloop()
-
 

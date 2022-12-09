@@ -9,8 +9,7 @@ class Graph_frame:
         self.HEIGHT = 1000
         self.WIDHT = 1000
 
-        master.geometry(str(self.master.winfo_screenwidth()) + 'x' + str(self.master.winfo_screenheight()))
-        master.state('zoomed')
+
         self.graph_frame = tk.Frame(self.master,height=self.HEIGHT,width = self.WIDHT)
         self.graph_canvas = tk.Canvas(self.graph_frame, width=self.WIDHT, height=self.HEIGHT, highlightthickness=1,
                                       highlightbackground="white", bg = "black")
@@ -18,14 +17,12 @@ class Graph_frame:
         self.graph_canvas.create_line(0, 500, 1000, 500, width=2, fill ="white") #X_axis
         # list of the hex char. for random colour genration
         self.hex_list = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f']
-        #___________________________________________________________________________________________________________________________________
-
-        #___________________________________________________________________________________________________________________________________
         self.y_axis_values()
         self.x_axis_values()
         self.vertical_grid()
         self.horizontal_grid()
         self.place_coords()
+        self.graph_canvas.pack()
 
     def vertical_grid(self):
         """
@@ -102,16 +99,21 @@ class Graph_frame:
         """
         points_list = self.calculate(equation)
         line_color = self.random_color()
+        print(points_list)
+        n= 0
 
-        for i in range(0, len(self.points_list)):
+        for i in range(0, len(points_list)):
             try:
                 # correction for the shift in orign from tk's (0,0) to tk's (500,500)
                 self.graph_canvas.create_line(points_list[i][0] + 500,
                                               -1 *  points_list[i][1] + 500,
                                               points_list[i+1][0] + 500,
-                                              -1 * points_list[i+1][1] + 500, fill = line_color)
+                                              -1 * points_list[i+1][1] + 500, fill = "white")
+                self.graph_canvas.update()
             except:
                 self.graph_canvas.update()
+
+        print("ploted")
 
     def on_canvas(self,cords):
         """
@@ -153,14 +155,3 @@ class Graph_frame:
         for i in range(6):
             colour_code += r.choice(self.hex_list)
         return colour_code
-
-if __name__ == "__main__":
-    graph_frame = tk.Tk()
-    gr = Graph_frame(graph_frame)
-    gr.graph_frame.place(x = 0,y= 0 )
-    # gr.plot(["x","power",2,"add",2,"multiply","x"])
-    # gr.plot(["x", "power", 3, "add", 2, "multiply", "x"])
-    gr.plot(["x", "power", 4, "add", 2, "multiply", "x"])
-    # gr.plot(["x","power",5,"add",2,"multiply","x"])
-
-    graph_frame.mainloop()
