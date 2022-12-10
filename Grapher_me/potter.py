@@ -161,3 +161,12 @@ class Graph_frame:
         for i in range(6):
             colour_code += r.choice(self.hex_list)
         return colour_code
+
+    def place_frame_graph(self,x,y):
+        """
+        places the Frame
+        :param x: X coordinate
+        :param y: Y coordinate
+        :return:
+        """
+        self.input_frame.place(x = x,y = y)

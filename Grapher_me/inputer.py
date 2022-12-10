@@ -6,8 +6,6 @@ class Inputer_frame(Graph_frame):
     def __init__(self,master):
         self.show_string = ''
         self.master = master
-        self.graph_frame.place(x= 0,y =0 )
-        self.graph_canvas.pack()
         self.input_frame = tk.Frame(master, height=580, width=920, bg="black")
         self.objects(self.input_frame)
         self.Equation_list = []
@@ -85,3 +83,5 @@ class Inputer_frame(Graph_frame):
         self.plot(self.Equation_list)
         self.Equation_list = []
 
+    def place_frame_input(self,x,y):
+        self.input_frame.place(x = x,y = y)
