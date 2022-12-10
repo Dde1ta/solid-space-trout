@@ -6,8 +6,8 @@ class Calculator:
         self.y_list = []
         self.answer = 0
         self.solved = False
-        self._x = -1 * units * sub_units
-        self.x_ = units*sub_units + 1
+        self._x = -1 * units
+        self.x_ = units+ 1
         self.sub_unit = sub_units
 
     def power(self,a,b):

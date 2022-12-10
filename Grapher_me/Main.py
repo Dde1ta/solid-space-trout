@@ -42,9 +42,18 @@ class Main:
         self.Equation_list = []
         self.show_string = ''
         self.inputer_objects(self.input_frame)
+        self.is_negative = False
+
+    def variables_for_equation_list(self):
+        self.equation_list_frame = tk.Frame(self.master,height=420 , width=920)
 
     def inputer_objects(self, frame):
-        self.equation_label = tk.Label(frame)
+        """
+            add the objects in inputer frame
+        :param frame: The inputer frame
+        :return:
+        """
+        self.equation_label = tk.Label(frame,bg = "black",fg = "white")
         self.equation_label.place(x=0, y=0, width=920, height=80)
         self.botton1 = tk.Button(frame, text=1, command=lambda: self.number_botton_pressed(self.botton1))
         self.botton1.place(x=0, y=180, width=230, height=100)
@@ -80,9 +89,9 @@ class Main:
         self.botton_x.place(x=460, y=80, width=230, height=100)
         self.botton_plot = tk.Button(frame, text="Plot", command=self.polt_botton_pressed)
         self.botton_plot.place(x=230, y=480, width=460, height=100)
-        self.botton_clear = tk.Button(frame, text="Clear")
-        self.botton_clear.place(x=0, y=80, width=230, height=100)
-        self.botton_delete = tk.Button(frame, text="Delete")
+        self.botton_num_negative = tk.Button(frame, text="(-)", command=self.negative_botton_pressed)
+        self.botton_num_negative.place(x=0, y=80, width=230, height=100)
+        self.botton_delete = tk.Button(frame, text="Delete",command = self.delete_botton_pressed)
         self.botton_delete.place(x=230, y=80, width=230, height=100)
 
     def vertical_grid(self):
@@ -149,7 +158,7 @@ class Main:
         :param equation:
         :return: the list of points
         """
-        cal = Cal(equation, 400, 50)
+        cal = Cal(equation, 500, 50)
         return cal.solve()
 
     def plot(self,equation):
@@ -168,7 +177,8 @@ class Main:
                 self.graph_canvas.create_line(points_list[i][0] + 500,
                                               -1 *  points_list[i][1] + 500,
                                               points_list[i+1][0] + 500,
-                                              -1 * points_list[i+1][1] + 500, fill = line_color)
+                                              -1 * points_list[i+1][1] + 500,
+                                              fill = line_color,tags = equation)
                 self.graph_canvas.update()
                 self.graph_frame.update()
             except:
@@ -218,13 +228,18 @@ class Main:
         return colour_code
 
     def number_botton_pressed(self, botton):
-        self.Equation_list.append(botton["text"])
-        self.show_string += str(botton["text"])
+        if self.is_negative:
+            num = int(botton["text"]) * -1
+            self.Equation_list.append(num)
+        else:
+            num = botton["text"]
+            self.Equation_list.append(botton["text"])
+        self.show_string += str(num)
         self.equation_label.config(text=self.show_string)
 
     def power_botton_pressed(self):
         self.Equation_list.append("power")
-        self.show_string += "**"
+        self.show_string += "^"
         self.equation_label.config(text=self.show_string)
 
     def divide_botton_pressed(self):
@@ -258,6 +273,23 @@ class Main:
         self.Equation_list = []
         self.equation_label.config(text = "")
         self.show_string = ""
+
+    def delete_botton_pressed(self):
+        show_string_new = ''
+        for i in range(len(self.show_string)-1):
+            show_string_new += self.show_string[i]
+        self.show_string = show_string_new
+        self.equation_label.config(text = self.show_string)
+        try:
+            self.Equation_list.pop()
+        except:
+            pass
+
+    def negative_botton_pressed(self):
+        if self.is_negative:
+            self.is_negative = False
+        else:
+            self.is_negative = True
 
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
