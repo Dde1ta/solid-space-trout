@@ -13,6 +13,7 @@ class Main:
 
         self.variables_for_graphs()
         self.variables_for_inputer()
+        self.variables_for_equation_list()
         self.place_frames()
 
     def variables_for_graphs(self):
@@ -45,7 +46,9 @@ class Main:
         self.is_negative = False
 
     def variables_for_equation_list(self):
-        self.equation_list_frame = tk.Frame(self.master,height=420 , width=920)
+        self.equation_show_frame = tk.Frame(self.master,height=450,width=920,bg = "black")
+        self.equation_frame_list = []
+        self.number_of_equation = 0
 
     def inputer_objects(self, frame):
         """
@@ -178,11 +181,13 @@ class Main:
                                               -1 *  points_list[i][1] + 500,
                                               points_list[i+1][0] + 500,
                                               -1 * points_list[i+1][1] + 500,
-                                              fill = line_color,tags = equation)
+                                              fill = line_color,tags = self.show_string)
                 self.graph_canvas.update()
                 self.graph_frame.update()
             except:
                 self.graph_canvas.update()
+
+        self.create_new_frame(line_color)
 
         print("ploted")
 
@@ -268,8 +273,11 @@ class Main:
         self.equation_label.config(text=self.show_string)
 
     def polt_botton_pressed(self):
+        self.show_on_top = self.show_string
+        print(self.show_on_top)
 
         self.plot(self.Equation_list)
+
         self.Equation_list = []
         self.equation_label.config(text = "")
         self.show_string = ""
@@ -294,6 +302,29 @@ class Main:
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=1000, y=450)
+        self.equation_show_frame.place(x=1000,y=0)
+
+    def create_new_frame(self,color):
+        self.equation_frame_list.append(tk.Frame(self.equation_show_frame,height=80,width=920))
+        self.number_of_equation += 1
+        self.add_to_equation_frame(self.number_of_equation,color)
+
+    def add_to_equation_frame(self,n,color):
+        frame = self.equation_frame_list[n-1]
+        print(self.show_on_top)
+        self.color_of_curve = tk.Label(frame,height=80,width=80,bg=color)
+        self.color_of_curve.place(x=0,y=0)
+        self.equation_label_top = tk.Label(frame,text = self.show_on_top,
+                                           height=80,width=760)
+        self.equation_label_top.place(x=80, y=0)
+        self.delete_botton_top = tk.Button(frame,height=80,width=80)
+        self.delete_botton_top.place(x=840,y=0)
+        self.place_equation_frame()
+
+    def place_equation_frame(self):
+        for frame_index in range(len(self.equation_frame_list)):
+            self.equation_frame_list[frame_index].place(x=0,y=80*frame_index)
+
 
 if __name__ == "__main__":
     root = tk.Tk()
