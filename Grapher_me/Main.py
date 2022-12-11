@@ -13,9 +13,7 @@ class Main:
 
         self.variables_for_graphs()
         self.variables_for_inputer()
-        self.variables_for_equation_list()
         self.place_frames()
-
     def variables_for_graphs(self):
         self.HEIGHT = 1000
         self.WIDHT = 1000
@@ -37,19 +35,12 @@ class Main:
         self.horizontal_grid()
         self.place_coords()
         self.graph_canvas.pack()
-
     def variables_for_inputer(self):
         self.input_frame = tk.Frame(self.master, height=580, width=920, bg="black")
         self.Equation_list = []
         self.show_string = ''
         self.inputer_objects(self.input_frame)
         self.is_negative = False
-
-    def variables_for_equation_list(self):
-        self.equation_show_frame = tk.Frame(self.master,height=450,width=920,bg = "black")
-        self.equation_frame_list = []
-        self.number_of_equation = 0
-
     def inputer_objects(self, frame):
         """
             add the objects in inputer frame
@@ -96,7 +87,6 @@ class Main:
         self.botton_num_negative.place(x=0, y=80, width=230, height=100)
         self.botton_delete = tk.Button(frame, text="Delete",command = self.delete_botton_pressed)
         self.botton_delete.place(x=230, y=80, width=230, height=100)
-
     def vertical_grid(self):
         """
         For the creation of grid lines
@@ -110,7 +100,6 @@ class Main:
                 pass
             else:
                 self.graph_canvas.create_line(i, 0, i, 1000, width=0.01, fill="gray")
-
     def horizontal_grid(self):
         """
         For the creation of horizontal lines
@@ -123,7 +112,6 @@ class Main:
                 pass
             else:
                 self.graph_canvas.create_line(0, i, 1000, i, fill="gray")
-
     def y_axis_values(self):
         """
         Creates the y-axis numbers
@@ -140,7 +128,6 @@ class Main:
 
         for n in range(10):
             self.y_axis_values_list_negative[n].place(x=510, y=((n+11) * 50)-14)
-
     def x_axis_values(self):
         """
         Creates the x-axis numbers
@@ -154,7 +141,6 @@ class Main:
             self.x_axis_values_list_negative[n].place(x = 50*n -8,y = 510)
         for n in range(9):
             self.x_axis_values_list_positive[n].place(x = (50 * (n+10)) +40, y = 510)
-
     def calculate(self,equation):
         """
         calls the calculator module
@@ -163,34 +149,31 @@ class Main:
         """
         cal = Cal(equation, 500, 50)
         return cal.solve()
-
     def plot(self,equation):
         """
         Plots the points in the list on the graph
         :param equation:
         :return:
         """
-        points_list = self.calculate(equation)
+        self.points_list = self.calculate(equation)
         line_color = self.random_color()
         n= 0
+        print(self.points_list)
 
-        for i in range(0, len(points_list)):
+        for i in range(0, len(self.points_list)):
             try:
                 # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                self.graph_canvas.create_line(points_list[i][0] + 500,
-                                              -1 *  points_list[i][1] + 500,
-                                              points_list[i+1][0] + 500,
-                                              -1 * points_list[i+1][1] + 500,
+                self.graph_canvas.create_line(self.points_list[i][0] + 500,
+                                              -1 *  self.points_list[i][1] + 500,
+                                              self.points_list[i+1][0] + 500,
+                                              -1 * self.points_list[i+1][1] + 500,
                                               fill = line_color,tags = self.show_string)
                 self.graph_canvas.update()
                 self.graph_frame.update()
             except:
                 self.graph_canvas.update()
 
-        self.create_new_frame(line_color)
-
         print("ploted")
-
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -201,7 +184,6 @@ class Main:
             return True
         else:
             return False
-
     def place_coords(self):
         """
         Places the relavtive coords for the mouse
@@ -221,7 +203,6 @@ class Main:
         else:
             pass
         self.graph_frame.after(1, self.place_coords)#updates position after 1 ms
-
     def random_color(self):
         """
         Genrates random hexcode of a color
@@ -231,7 +212,6 @@ class Main:
         for i in range(6):
             colour_code += r.choice(self.hex_list)
         return colour_code
-
     def number_botton_pressed(self, botton):
         if self.is_negative:
             num = int(botton["text"]) * -1
@@ -241,37 +221,30 @@ class Main:
             self.Equation_list.append(botton["text"])
         self.show_string += str(num)
         self.equation_label.config(text=self.show_string)
-
     def power_botton_pressed(self):
         self.Equation_list.append("power")
         self.show_string += "^"
         self.equation_label.config(text=self.show_string)
-
     def divide_botton_pressed(self):
         self.Equation_list.append("divide")
         self.show_string += "/"
         self.equation_label.config(text=self.show_string)
-
     def multiply_botton_pressed(self):
         self.Equation_list.append("multiply")
         self.show_string += "*"
         self.equation_label.config(text=self.show_string)
-
     def add_botton_pressed(self):
         self.Equation_list.append("add")
         self.show_string += "+"
         self.equation_label.config(text=self.show_string)
-
     def subtract_botton_pressed(self):
         self.Equation_list.append("subtract")
         self.show_string += "-"
         self.equation_label.config(text=self.show_string)
-
     def x_botton_pressed(self):
         self.Equation_list.append("x")
         self.show_string += "x"
         self.equation_label.config(text=self.show_string)
-
     def polt_botton_pressed(self):
         self.show_on_top = self.show_string
         print(self.show_on_top)
@@ -281,7 +254,6 @@ class Main:
         self.Equation_list = []
         self.equation_label.config(text = "")
         self.show_string = ""
-
     def delete_botton_pressed(self):
         show_string_new = ''
         for i in range(len(self.show_string)-1):
@@ -292,41 +264,18 @@ class Main:
             self.Equation_list.pop()
         except:
             pass
-
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
         else:
             self.is_negative = True
-
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=1000, y=450)
-        self.equation_show_frame.place(x=1000,y=0)
-
-    def create_new_frame(self,color):
-        self.equation_frame_list.append(tk.Frame(self.equation_show_frame,height=80,width=920))
-        self.number_of_equation += 1
-        self.add_to_equation_frame(self.number_of_equation,color)
-
-    def add_to_equation_frame(self,n,color):
-        frame = self.equation_frame_list[n-1]
-        print(self.show_on_top)
-        self.color_of_curve = tk.Label(frame,height=80,width=80,bg=color)
-        self.color_of_curve.place(x=0,y=0)
-        self.equation_label_top = tk.Label(frame,text = self.show_on_top,
-                                           height=80,width=760)
-        self.equation_label_top.place(x=80, y=0)
-        self.delete_botton_top = tk.Button(frame,height=80,width=80)
-        self.delete_botton_top.place(x=840,y=0)
-        self.place_equation_frame()
-
-    def place_equation_frame(self):
-        for frame_index in range(len(self.equation_frame_list)):
-            self.equation_frame_list[frame_index].place(x=0,y=80*frame_index)
 
 
 if __name__ == "__main__":
     root = tk.Tk()
+    root.config(bg="black")
     main = Main(root)
     root.mainloop()
