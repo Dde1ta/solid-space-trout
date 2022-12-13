@@ -148,7 +148,7 @@ class Main:
         :return: the list of points
         """
         cal = Cal(equation, 500, 50)
-        return cal.solve()
+        return cal.solve(equation)
     def plot(self,equation):
         """
         Plots the points in the list on the graph
@@ -242,8 +242,8 @@ class Main:
         self.show_string += "-"
         self.equation_label.config(text=self.show_string)
     def x_botton_pressed(self):
-        self.Equation_list.append("x")
-        self.show_string += "x"
+        self.Equation_list.append("y")
+        self.show_string += "y"
         self.equation_label.config(text=self.show_string)
     def polt_botton_pressed(self):
         self.show_on_top = self.show_string
