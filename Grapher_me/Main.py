@@ -158,7 +158,6 @@ class Main:
         self.points_list = self.calculate(equation)
         line_color = self.random_color()
         n= 0
-        print(self.points_list)
 
         for i in range(0, len(self.points_list)):
             try:
