@@ -24,7 +24,7 @@ class Main:
         self.graph_canvas.create_line(500, 0, 500, 1000, width=2, fill="white")  # Y_axis
         self.graph_canvas.create_line(0, 500, 1000, 500, width=2, fill="white")  # X_axis
         # list of the hex char. for random colour genration
-        self.hex_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f']
+        self.hex_list = [ '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c']
         self.show_string = ''
 
         self.graph_frame.place(x=0, y=0)
@@ -201,35 +201,6 @@ class Main:
                     self.graph_frame.update()
                 except:
                     self.graph_canvas.update()
-
-    def polt_single(self):
-        for i in range(0, len(self.points_list)):
-            try:
-                # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                self.graph_canvas.create_line(self.points_list[i][0] + 500,
-                                              -1 *  self.points_list[i][1] + 500,
-                                              self.points_list[i+1][0] + 500,
-                                              -1 * self.points_list[i+1][1] + 500,
-                                              fill = line_color,tags = self.show_string)
-                self.graph_canvas.update()
-                self.graph_frame.update()
-            except:
-                self.graph_canvas.update()
-
-    def polt_double(self):
-        for i in range(0, len(self.points_list)):
-            try:
-                # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                self.graph_canvas.create_line(self.points_list[i][0] + 500,
-                                              -1 * self.points_list[i][1] + 500,
-                                              self.points_list[i + 2][0] + 500,
-                                              -1 * self.points_list[i + 2][1] + 500,
-                                              fill=line_color, tags=self.show_string)
-                self.graph_canvas.update()
-                self.graph_frame.update()
-            except:
-                self.graph_canvas.update()
-
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -332,7 +303,6 @@ class Main:
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=1000, y=450)
-
 
 if __name__ == "__main__":
     root = tk.Tk()
