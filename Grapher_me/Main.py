@@ -166,7 +166,43 @@ class Main:
         self.points_list = self.calculate(equation)
         line_color = self.random_color()
         n= 0
+        print(self.points_list)
 
+        if "x" in equation and "y" in equation:
+            print("yes")
+            for i in range(0, len(self.points_list)):
+                try:
+                    # correction for the shift in orign from tk's (0,0) to tk's (500,500)
+                    self.graph_canvas.create_line(self.points_list[i][0] + 500,
+                                                  -1 * self.points_list[i][1] + 500,
+                                                  self.points_list[i + 2][0] + 500,
+                                                  -1 * self.points_list[i + 2][1] + 500,
+                                                  fill=line_color, tags=self.show_string)
+                    self.graph_canvas.update()
+                    self.graph_frame.update()
+                except:
+                    self.graph_canvas.create_line(self.points_list[i][0] + 500,
+                                                  -1 * self.points_list[i][1] + 500,
+                                                  self.points_list[0][0] + 500,
+                                                  -1 * self.points_list[0][1] + 500,
+                                                  fill=line_color, tags=self.show_string)
+                    self.graph_canvas.update()
+        else:
+            print("no")
+            for i in range(0, len(self.points_list)):
+                try:
+                    # correction for the shift in orign from tk's (0,0) to tk's (500,500)
+                    self.graph_canvas.create_line(self.points_list[i][0] + 500,
+                                                  -1 * self.points_list[i][1] + 500,
+                                                  self.points_list[i + 1][0] + 500,
+                                                  -1 * self.points_list[i + 1][1] + 500,
+                                                  fill=line_color, tags=self.show_string)
+                    self.graph_canvas.update()
+                    self.graph_frame.update()
+                except:
+                    self.graph_canvas.update()
+
+    def polt_single(self):
         for i in range(0, len(self.points_list)):
             try:
                 # correction for the shift in orign from tk's (0,0) to tk's (500,500)
@@ -180,7 +216,20 @@ class Main:
             except:
                 self.graph_canvas.update()
 
-        print("ploted")
+    def polt_double(self):
+        for i in range(0, len(self.points_list)):
+            try:
+                # correction for the shift in orign from tk's (0,0) to tk's (500,500)
+                self.graph_canvas.create_line(self.points_list[i][0] + 500,
+                                              -1 * self.points_list[i][1] + 500,
+                                              self.points_list[i + 2][0] + 500,
+                                              -1 * self.points_list[i + 2][1] + 500,
+                                              fill=line_color, tags=self.show_string)
+                self.graph_canvas.update()
+                self.graph_frame.update()
+            except:
+                self.graph_canvas.update()
+
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
