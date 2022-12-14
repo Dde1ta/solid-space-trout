@@ -5,7 +5,6 @@ class Calculator:
         self.sub_unit = sub_units
         self.equation = equation
         self.units = units
-
     def solve(self,equ):
         to_return = []
         if "x" in equ and "y" in equ:
@@ -19,7 +18,6 @@ class Calculator:
             self.solve_in_y_variables(self.units)
             to_return=self.solve_in_y(equ)
         return to_return
-
     def solve_in_x_variables(self,units):
         self._x = -1 * units
         self.x_ = units + 1
@@ -28,22 +26,17 @@ class Calculator:
         self.y_ = units + 1
     def power(self,a,b):
         return a**b
-
     def divide(self,a,b):
         try:
             return a/b
         except:
             return None
-
     def multiply(self,a,b):
         return a*b
-
     def add(self,a,b):
         return a+b
-
     def subtract(self,a,b):
         return a-b
-
     def solve_in_x(self,orignal_equ):
         sign_list = [self.power,self.divide,self.multiply,self.add,self.subtract]
         y_list = []
@@ -78,7 +71,6 @@ class Calculator:
             y_list.append([x,y_equ[0]*self.sub_unit])
 
         return y_list
-
     def solve_in_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
         x_list = []
@@ -113,7 +105,6 @@ class Calculator:
             x_list.append([x_equ[0] * self.sub_unit,y])
 
         return x_list
-
     def solve_in_x_and_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
         x_y_equation = orignal_equ
@@ -147,9 +138,9 @@ class Calculator:
                                     answer = sign(true_value_x, true_value_x)
                                 else:
                                     answer = sign(true_value_x, x_y_equation[element_index + 1])
-                            elif x_equ[element_index + 1] == "y":
+                            elif x_y_equation[element_index + 1] == "y":
                                 answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_y)
-                            elif x_equ[element_index + 1] == "x":
+                            elif x_y_equation[element_index + 1] == "x":
                                 answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_x)
                             else:
                                 answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1),
