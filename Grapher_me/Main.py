@@ -41,6 +41,7 @@ class Main:
         self.show_string = ''
         self.inputer_objects(self.input_frame)
         self.is_negative = False
+        self.adding_digites = False
     def inputer_objects(self, frame):
         """
             add the objects in inputer frame
@@ -240,57 +241,87 @@ class Main:
             colour_code += r.choice(self.hex_list)
         return colour_code
     def number_botton_pressed(self, botton):
-        if self.is_negative:
-            num = int(botton["text"]) * -1
-            self.Equation_list.append(num)
+        print(self.adding_digites,self.Equation_list[-1])
+        if self.adding_digites:
+            if self.is_negative:
+                num = (int(self.Equation_list.pop())*10 + int(botton["text"]))* -1
+                self.Equation_list.append(num)
+            else:
+                num = int(self.Equation_list.pop())*10 + botton["text"]
+                self.Equation_list.append(num)
+            new_show = ""
+            for char_i in range(len(self.show_string)-1):
+                new_show+=self.show_string[char_i]
+                print(new_show)
+            self.show_string = new_show
+            self.show_string += str(num)
         else:
-            num = botton["text"]
-            self.Equation_list.append(botton["text"])
-        self.show_string += str(num)
+            if self.is_negative:
+                num = int(botton["text"]) * -1
+                self.Equation_list.append(num)
+            else:
+                num = botton["text"]
+                self.Equation_list.append(botton["text"])
+            self.adding_digites = True
+            self.show_string += str(num)
         self.equation_label.config(text=self.show_string)
     def power_botton_pressed(self):
         self.Equation_list.append("power")
         self.show_string += "^"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def divide_botton_pressed(self):
         self.Equation_list.append("divide")
         self.show_string += "/"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def multiply_botton_pressed(self):
         self.Equation_list.append("multiply")
         self.show_string += "*"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def add_botton_pressed(self):
         self.Equation_list.append("add")
         self.show_string += "+"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def subtract_botton_pressed(self):
         self.Equation_list.append("subtract")
         self.show_string += "-"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def x_botton_pressed(self):
         self.Equation_list.append("x")
         self.show_string += "x"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def y_botton_pressed(self):
         self.Equation_list.append("y")
         self.show_string += "y"
         self.equation_label.config(text=self.show_string)
+        self.adding_digites = False
     def polt_botton_pressed(self):
         self.show_on_top = self.show_string
-        print(self.show_on_top)
+        print(self.show_on_top,self.Equation_list)
+
 
         self.plot(self.Equation_list)
 
         self.Equation_list = []
         self.equation_label.config(text = "")
         self.show_string = ""
+        self.adding_digites = False
     def delete_botton_pressed(self):
         show_string_new = ''
         for i in range(len(self.show_string)-1):
             show_string_new += self.show_string[i]
         self.show_string = show_string_new
         self.equation_label.config(text = self.show_string)
+        if type(self.Equation_list[-1]) == type(1):
+            if self.Equation_list[-1]/10 > 10 :
+                pass
+            else:
+                self.adding_digites = False
         try:
             self.Equation_list.pop()
         except:
@@ -300,6 +331,7 @@ class Main:
             self.is_negative = False
         else:
             self.is_negative = True
+        self.adding_digites = False
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=1000, y=450)
