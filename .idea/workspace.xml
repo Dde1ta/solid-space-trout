@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="ADDED HYY">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grapher_me/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/Main.py" afterDir="false" />
-    </list>
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="can do multiple digits" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671035462571</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="can do multiple digits">
+      <created>1671208084640</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1671208084640</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,7 +192,34 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -201,6 +232,7 @@
     <MESSAGE value="added buttons functions" />
     <MESSAGE value="add the top" />
     <MESSAGE value="ADDED HYY" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADDED HYY" />
+    <MESSAGE value="can do multiple digits" />
+    <option name="LAST_COMMIT_MESSAGE" value="can do multiple digits" />
   </component>
 </project>
