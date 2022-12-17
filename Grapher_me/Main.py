@@ -182,12 +182,13 @@ class Main:
                     self.graph_canvas.update()
                     self.graph_frame.update()
                 except:
-                    self.graph_canvas.create_line(self.points_list[i][0] + 500,
-                                                  -1 * self.points_list[i][1] + 500,
-                                                  self.points_list[0][0] + 500,
-                                                  -1 * self.points_list[0][1] + 500,
-                                                  fill=line_color, tags=self.show_string)
-                    self.graph_canvas.update()
+                    pass
+                    # self.graph_canvas.create_line(self.points_list[i][0] + 500,
+                    #                               -1 * self.points_list[i][1] + 500,
+                    #                               self.points_list[0][0] + 500,
+                    #                               -1 * self.points_list[0][1] + 500,
+                    #                               fill=line_color, tags=self.show_string)
+                    # self.graph_canvas.update()
         else:
             print("no")
             for i in range(0, len(self.points_list)):
@@ -241,7 +242,6 @@ class Main:
             colour_code += r.choice(self.hex_list)
         return colour_code
     def number_botton_pressed(self, botton):
-        print(self.adding_digites,self.Equation_list[-1])
         if self.adding_digites:
             if self.is_negative:
                 num = (int(self.Equation_list.pop())*10 + int(botton["text"]))* -1
