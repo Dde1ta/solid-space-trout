@@ -176,8 +176,8 @@ class Main:
                     # correction for the shift in orign from tk's (0,0) to tk's (500,500)
                     self.graph_canvas.create_line(self.points_list[i][0] + 500,
                                                   -1 * self.points_list[i][1] + 500,
-                                                  self.points_list[i + 2][0] + 500,
-                                                  -1 * self.points_list[i + 2][1] + 500,
+                                                  self.points_list[i + 1][0] + 500,
+                                                  -1 * self.points_list[i + 1][1] + 500,
                                                   fill=line_color, tags=self.show_string)
                     self.graph_canvas.update()
                     self.graph_frame.update()
@@ -329,8 +329,10 @@ class Main:
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
+            self.botton_num_negative.config(bg=self.botton_y["bg"],fg="black")
         else:
             self.is_negative = True
+            self.botton_num_negative.config(bg = "light gray",fg="black")
         self.adding_digites = False
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)

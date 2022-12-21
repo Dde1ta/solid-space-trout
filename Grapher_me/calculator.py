@@ -68,8 +68,10 @@ class Calculator:
                             new_y_list.append(y_equ[element_index])
                 y_equ = new_y_list
                 new_y_list = []
-            y_list.append([x,y_equ[0]*self.sub_unit])
-
+            try:
+                y_list.append([x,y_equ[0]*self.sub_unit])
+            except:
+                pass
         return y_list
     def solve_in_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
@@ -102,8 +104,10 @@ class Calculator:
                             new_x_list.append(x_equ[element_index])
                 x_equ = new_x_list
                 new_x_list = []
-            x_list.append([x_equ[0] * self.sub_unit,y])
-
+            try:
+                x_list.append([x_equ[0] * self.sub_unit, y])
+            except:
+                pass
         return x_list
     def solve_in_x_and_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
@@ -115,7 +119,7 @@ class Calculator:
             true_value_x = x / self.sub_unit
             new_x_y_list = []
             x_y_equation = orignal_equ
-            for y in range(self._y,self.y_):
+            for y in range(self._y,0):
                 true_value_y = y / self.sub_unit
                 x_y_equation = orignal_equ
                 new_x_y_list = []
@@ -156,5 +160,53 @@ class Calculator:
                     new_x_y_list = []
                 if x_y_equation [0] == 0:
                     points_list.append([x,y])
+                    break
+
+        for x in range(self._x,self.x_):
+            true_value_x = x / self.sub_unit
+            new_x_y_list = []
+            x_y_equation = orignal_equ
+            for y in range(0,self.y_):
+                true_value_y = y / self.sub_unit
+                x_y_equation = orignal_equ
+                new_x_y_list = []
+                for sign in sign_list:
+                    sign_name = sign.__name__
+                    for element_index in range(0, len(x_y_equation)):
+                        if x_y_equation[element_index] == sign_name:
+                            self.solved = True
+                            if new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "y":
+                                if x_y_equation[element_index + 1] == "y":
+                                    answer = sign(true_value_y, true_value_y)
+                                elif x_y_equation[element_index + 1] == "x":
+                                    answer = sign(true_value_y, true_value_x)
+                                else:
+                                    answer = sign(true_value_y, x_y_equation[element_index + 1])
+                            elif new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "x":
+                                if x_y_equation[element_index + 1] == "y":
+                                    answer = sign(true_value_x, true_value_y)
+                                elif x_y_equation[element_index + 1] == "x":
+                                    answer = sign(true_value_x, true_value_x)
+                                else:
+                                    answer = sign(true_value_x, x_y_equation[element_index + 1])
+                            elif x_y_equation[element_index + 1] == "y":
+                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_y)
+                            elif x_y_equation[element_index + 1] == "x":
+                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_x)
+                            else:
+                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1),
+                                              x_y_equation[element_index + 1])
+                            new_x_y_list.pop()
+                            new_x_y_list.append(answer)
+                        else:
+                            if self.solved:
+                                self.solved = False
+                            else:
+                                new_x_y_list.append(x_y_equation[element_index])
+                    x_y_equation = new_x_y_list
+                    new_x_y_list = []
+                if x_y_equation [0] == 0:
+                    points_list.append([x,y])
+                    break
 
         return points_list

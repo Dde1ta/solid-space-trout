@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="can do multiple digits">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10-12-2022_11_29_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10-12-2022_11_29__Changes_.xml" beforeDir="false" />
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="issue no 5 done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grapher_me/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/calculator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671208084640</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="issue no 5 done">
+      <created>1671270553356</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1671270553356</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -238,6 +244,7 @@
     <MESSAGE value="add the top" />
     <MESSAGE value="ADDED HYY" />
     <MESSAGE value="can do multiple digits" />
-    <option name="LAST_COMMIT_MESSAGE" value="can do multiple digits" />
+    <MESSAGE value="issue no 5 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="issue no 5 done" />
   </component>
 </project>
