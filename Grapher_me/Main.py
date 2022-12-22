@@ -73,7 +73,8 @@ class Main:
                 dic[id_][3] -= 1
             else:
                 if id_ == id:
-                    self.graph_canvas.delete(id_)
+                    self.graph_canvas.delete(id)
+                    self.graph_canvas.delete(id)
                     self.graph_canvas.update()
                     self.object_dic[id_][0].destroy()
                     self.object_dic[id_][1].destroy()
@@ -223,7 +224,7 @@ class Main:
                                                   -1 * self.points_list[i][1] + 500,
                                                   self.points_list[i + 1][0] + 500,
                                                   -1 * self.points_list[i + 1][1] + 500,
-                                                  fill=line_color, tags=self.show_string)
+                                                  fill=line_color, tags=self.not_show_string)
                     self.graph_canvas.update()
                     self.graph_frame.update()
                 except:
