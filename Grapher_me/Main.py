@@ -40,6 +40,7 @@ class Main:
         self.input_frame = tk.Frame(self.master, height=580, width=920, bg="black")
         self.Equation_list = []
         self.show_string = ''
+        self.tag_string = ""
         self.inputer_objects(self.input_frame)
         self.is_negative = False
         self.adding_digites = False
@@ -212,8 +213,17 @@ class Main:
         self.points_list = self.calculate(equation)
         line_color = self.random_color()
         n= 0
+        self.tag_string = ""
+        for char in self.show_string:
+            if char == "^":
+                self.tag_string+="**"
+            else:
+                self.tag_string+=char
+
         self.create_new_object_menu(self.show_string,self.menu_frame,line_color)
         print(self.points_list)
+
+
 
         if "x" in equation and "y" in equation:
             print("yes")
@@ -224,7 +234,7 @@ class Main:
                                                   -1 * self.points_list[i][1] + 500,
                                                   self.points_list[i + 1][0] + 500,
                                                   -1 * self.points_list[i + 1][1] + 500,
-                                                  fill=line_color, tags=self.not_show_string)
+                                                  fill=line_color, tags=self.show_string)
                     self.graph_canvas.update()
                     self.graph_frame.update()
                 except:
@@ -313,7 +323,7 @@ class Main:
         self.equation_label.config(text=self.show_string)
     def power_botton_pressed(self):
         self.Equation_list.append("power")
-        self.show_string += "^"
+        self.show_string += "**"
         self.equation_label.config(text=self.show_string)
         self.adding_digites = False
     def divide_botton_pressed(self):
