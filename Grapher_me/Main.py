@@ -13,6 +13,7 @@ class Main:
 
         self.variables_for_graphs()
         self.variables_for_inputer()
+        self.variables_for_graphs_menu()
         self.place_frames()
     def variables_for_graphs(self):
         self.HEIGHT = 1000
@@ -42,6 +43,46 @@ class Main:
         self.inputer_objects(self.input_frame)
         self.is_negative = False
         self.adding_digites = False
+    def variables_for_graphs_menu(self):
+        self.menu_frame = tk.Frame(self.master,height = 480,width = 920,bg = "black" )
+        self.number = 0
+        self.object_dic = {}
+
+    def create_new_object_menu(self,string,frame,color):
+        n = self.number
+        self.object_dic[string] = [tk.Label(frame,bg = color),
+                                   tk.Label(frame,text = string),
+                                   tk.Button(frame,text = "delete",command = lambda : self.delete_row_in_menu(string)),
+                                   self.number]
+        self.number += 1
+        self.place_menu_items()
+
+    def place_menu_items(self):
+
+        for id in self.object_dic:
+            list = self.object_dic[id]
+            list[0].place(x = 0,y = list[3]*80,height = 80,width=80)
+            list[1].place(x=80, y=list[3]*80,height=80,width=760)
+            list[2].place(x=840, y=list[3]*80,height = 80,width=80)
+    def delete_row_in_menu(self,id):
+        found = False
+        dic = {}
+        for id_ in self.object_dic:
+            if found:
+                dic[id_] = self.object_dic[id_]
+                dic[id_][3] -= 1
+            else:
+                if id_ == id:
+                    self.object_dic[id_][0].destroy()
+                    self.object_dic[id_][1].destroy()
+                    self.object_dic[id_][2].destroy()
+                    found =True
+                else:
+                    dic[id_] = self.object_dic[id_]
+        self.object_dic = dic
+        self.place_menu_items()
+
+
     def inputer_objects(self, frame):
         """
             add the objects in inputer frame
@@ -167,6 +208,7 @@ class Main:
         self.points_list = self.calculate(equation)
         line_color = self.random_color()
         n= 0
+        self.create_new_object_menu(self.show_string,self.menu_frame,line_color)
         print(self.points_list)
 
         if "x" in equation and "y" in equation:
@@ -337,6 +379,7 @@ class Main:
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=1000, y=450)
+        self.menu_frame.place(x = 1000, y= 0)
 
 if __name__ == "__main__":
     root = tk.Tk()
