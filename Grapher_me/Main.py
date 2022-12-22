@@ -73,6 +73,8 @@ class Main:
                 dic[id_][3] -= 1
             else:
                 if id_ == id:
+                    self.graph_canvas.delete(id_)
+                    self.graph_canvas.update()
                     self.object_dic[id_][0].destroy()
                     self.object_dic[id_][1].destroy()
                     self.object_dic[id_][2].destroy()
@@ -80,6 +82,7 @@ class Main:
                 else:
                     dic[id_] = self.object_dic[id_]
         self.object_dic = dic
+        self.number -= 1
         self.place_menu_items()
 
 
