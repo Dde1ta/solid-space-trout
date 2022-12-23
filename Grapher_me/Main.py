@@ -48,7 +48,6 @@ class Main:
         self.menu_frame = tk.Frame(self.master,height = 480,width = 920,bg = "black" )
         self.number = 0
         self.object_dic = {}
-
     def create_new_object_menu(self,string,frame,color):
         n = self.number
         self.object_dic[string] = [tk.Label(frame,bg = color),
@@ -57,7 +56,6 @@ class Main:
                                    self.number]
         self.number += 1
         self.place_menu_items()
-
     def place_menu_items(self):
 
         for id in self.object_dic:
@@ -86,8 +84,6 @@ class Main:
         self.object_dic = dic
         self.number -= 1
         self.place_menu_items()
-
-
     def inputer_objects(self, frame):
         """
             add the objects in inputer frame
