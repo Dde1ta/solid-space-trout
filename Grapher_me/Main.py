@@ -282,7 +282,7 @@ class Main:
                                           fill = 'white',
                                           tag = "coords")
         else:
-            pass
+            self.graph_canvas.delete("coords")
         self.graph_frame.after(1, self.place_coords)#updates position after 1 ms
     def random_color(self):
         """
@@ -302,11 +302,9 @@ class Main:
                 num = int(self.Equation_list.pop())*10 + botton["text"]
                 self.Equation_list.append(num)
             new_show = ""
-            for char_i in range(len(self.show_string)-1):
-                new_show+=self.show_string[char_i]
-                print(new_show)
+            for char in self.Equation_list:
+                new_show += str(char)
             self.show_string = new_show
-            self.show_string += str(num)
         else:
             if self.is_negative:
                 num = int(botton["text"]) * -1
@@ -365,10 +363,6 @@ class Main:
         self.adding_digites = False
     def delete_botton_pressed(self):
         show_string_new = ''
-        for i in range(len(self.show_string)-1):
-            show_string_new += self.show_string[i]
-        self.show_string = show_string_new
-        self.equation_label.config(text = self.show_string)
         if type(self.Equation_list[-1]) == type(1):
             if self.Equation_list[-1]/10 > 10 :
                 pass
@@ -378,6 +372,11 @@ class Main:
             self.Equation_list.pop()
         except:
             pass
+        for i in self.Equation_list:
+            show_string_new += str(i)
+
+        self.show_string = show_string_new
+        self.equation_label.config(text = self.show_string)
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
