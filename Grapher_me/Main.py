@@ -44,6 +44,7 @@ class Main:
         self.inputer_objects(self.input_frame)
         self.is_negative = False
         self.adding_digites = False
+        self.tag_list = []
     def variables_for_graphs_menu(self):
         self.menu_frame = tk.Frame(self.master,height = 480,width = 920,bg = "black" )
         self.number = 0
@@ -219,8 +220,6 @@ class Main:
         self.create_new_object_menu(self.show_string,self.menu_frame,line_color)
         print(self.points_list)
 
-
-
         if "x" in equation and "y" in equation:
             print("yes")
             for i in range(0, len(self.points_list)):
@@ -250,11 +249,13 @@ class Main:
                                                   -1 * self.points_list[i][1] + 500,
                                                   self.points_list[i + 1][0] + 500,
                                                   -1 * self.points_list[i + 1][1] + 500,
-                                                  fill=line_color, tags=self.show_string)
+                                                  fill=line_color, tags=self.show_string,activewidth=5)
                     self.graph_canvas.update()
                     self.graph_frame.update()
                 except:
                     self.graph_canvas.update()
+        self.on_line("f")
+        self.tag_list.append(self.show_string)
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -265,6 +266,8 @@ class Main:
             return True
         else:
             return False
+    def on_line(self,cords):
+        pass
     def place_coords(self):
         """
         Places the relavtive coords for the mouse
@@ -373,7 +376,18 @@ class Main:
         except:
             pass
         for i in self.Equation_list:
-            show_string_new += str(i)
+            if i == "power":
+                show_string_new += "**"
+            elif i == "multiply":
+                show_string_new += "*"
+            elif i == "divide":
+                show_string_new += "/"
+            elif i == "add":
+                show_string_new += "+"
+            elif i == "subtract":
+                show_string_new += "-"
+            else:
+                show_string_new += str(i)
 
         self.show_string = show_string_new
         self.equation_label.config(text = self.show_string)
