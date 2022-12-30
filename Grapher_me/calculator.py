@@ -9,7 +9,23 @@ class Calculator:
 
     def solve(self,equ):
         to_return = []
-        if "x" in equ and "y" in equ:
+        if self.has_brackets(equ):
+            for i in equ:
+                if "x" in i and "y" in i:
+                    self.solve_in_x_variables(self.units)
+                    self.solve_in_y_variables(self.units)
+                    to_return = self.solve_in_x_and_y(equ)
+                    break
+                elif "x" in i:
+                    self.solve_in_x_variables(self.units)
+                    to_return = self.solve_in_x(equ)
+                    break
+                elif "y" in i:
+                    self.solve_in_y_variables(self.units)
+                    to_return = self.solve_in_y(equ)
+                    break
+
+        elif "x" in equ and "y" in equ:
             self.solve_in_x_variables(self.units)
             self.solve_in_y_variables(self.units)
             to_return=self.solve_in_x_and_y(equ)
@@ -19,6 +35,7 @@ class Calculator:
         elif "y" in equ:
             self.solve_in_y_variables(self.units)
             to_return=self.solve_in_y(equ)
+
         return to_return
 
     def solve_in_x_variables(self,units):
@@ -30,6 +47,8 @@ class Calculator:
         self.y_ = units + 1
 
     def has_brackets(self,equ):
+        has_bracket = False
+
         for i in equ:
             if type([]) == type(i):
                 has_bracket = True
@@ -59,9 +78,13 @@ class Calculator:
         sign_list = [self.power,self.divide,self.multiply,self.add,self.subtract]
         y_list = []
         for x in range(self._x,self.x_):
-
             true_value = x / self.sub_unit
-            y_equ = orignal_equ
+            y_equ = []
+            for i in orignal_equ:
+                if type(i) == type([]):
+                    y_equ.append(self.solve_in_a_single_x(x,i))
+                else:
+                    y_equ.append(i)
             new_y_list = []
             for sign in sign_list:
                 sign_name = sign.__name__
@@ -136,7 +159,12 @@ class Calculator:
         x_list = []
         for y in range(self._y, self.y_):
             true_value = y / self.sub_unit
-            x_equ = orignal_equ
+            if self.has_brackets(orignal_equ):
+                for i in orignal_equ:
+                    if type(i) == type([]):
+                        x_equ.append(self.solve_in_a_single_y(y,i))
+                    else:
+                        x_equ.append(i)
             new_x_list = []
             for sign in sign_list:
                 sign_name = sign.__name__
