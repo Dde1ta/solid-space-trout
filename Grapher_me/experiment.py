@@ -1,3 +1,4 @@
+import calculator
 # class Calculator:
 #     def __init__(self, equation, units, sub_units):
 #         self.Y_EQUATION = equation
@@ -62,7 +63,5 @@
 #
 #         return self.y_list
 
-dic = {'a':"dsa",'b':"Fdfdf",'c':"dfdfd"}
-print(dic)
-dic.pop("b")
-print(dic)
+cal = calculator.Calculator([],2,3)
+print(cal.solve_in_a_single_y(2,["y","power",3,"divide","y"]))
