@@ -306,10 +306,22 @@ class Main:
             else:
                 num = int(self.Equation_list.pop())*10 + botton["text"]
                 self.Equation_list.append(num)
-            new_show = ""
-            for char in self.Equation_list:
-                new_show += str(char)
-            self.show_string = new_show
+            show_string_new = ""
+            for i in self.Equation_list:
+                if i == "power":
+                    show_string_new += "**"
+                elif i == "multiply":
+                    show_string_new += "*"
+                elif i == "divide":
+                    show_string_new += "/"
+                elif i == "add":
+                    show_string_new += "+"
+                elif i == "subtract":
+                    show_string_new += "-"
+                else:
+                    show_string_new += str(i)
+
+            self.show_string = show_string_new
         else:
             if self.is_negative:
                 num = int(botton["text"]) * -1
