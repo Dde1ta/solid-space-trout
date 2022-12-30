@@ -44,6 +44,8 @@ class Main:
         self.inputer_objects(self.input_frame)
         self.is_negative = False
         self.adding_digites = False
+        self.open_bracket = False
+        self.bracket_list = []
         self.tag_list = []
     def variables_for_graphs_menu(self):
         self.menu_frame = tk.Frame(self.master,height = 480,width = 920,bg = "black" )
