@@ -47,25 +47,28 @@ class Calculator:
             for sign in sign_list:
                 sign_name = sign.__name__
                 for element_index in range(0,len(y_equ)):
-                    if y_equ[element_index] == sign_name:
-                        self.solved = True
-                        if new_y_list.__getitem__(len(new_y_list)-1) == "x":
-                            if y_equ[element_index + 1] == "x":
-                                answer = sign(true_value,true_value)
+                    try:
+                        if y_equ[element_index] == sign_name:
+                            self.solved = True
+                            if new_y_list.__getitem__(len(new_y_list) - 1) == "x":
+                                if y_equ[element_index + 1] == "x":
+                                    answer = sign(true_value, true_value)
+                                else:
+                                    answer = sign(true_value, y_equ[element_index + 1])
+                            elif y_equ[element_index + 1] == "x":
+                                answer = sign(new_y_list.__getitem__(len(new_y_list) - 1), true_value)
                             else:
-                                answer = sign(true_value, y_equ[element_index + 1])
-                        elif y_equ[element_index+1] == "x":
-                            answer = sign(new_y_list.__getitem__(len(new_y_list)-1),true_value)
+                                answer = sign(new_y_list.__getitem__(len(new_y_list) - 1),
+                                              y_equ[element_index + 1])
+                            new_y_list.pop()
+                            new_y_list.append(answer)
                         else:
-                            answer = sign(new_y_list.__getitem__(len(new_y_list) - 1),
-                                               y_equ[element_index+1])
-                        new_y_list.pop()
-                        new_y_list.append(answer)
-                    else:
-                        if self.solved:
-                            self.solved = False
-                        else:
-                            new_y_list.append(y_equ[element_index])
+                            if self.solved:
+                                self.solved = False
+                            else:
+                                new_y_list.append(y_equ[element_index])
+                    except:
+                        pass
                 y_equ = new_y_list
                 new_y_list = []
             try:
@@ -83,25 +86,28 @@ class Calculator:
             for sign in sign_list:
                 sign_name = sign.__name__
                 for element_index in range(0, len(x_equ)):
-                    if x_equ[element_index] == sign_name:
-                        self.solved = True
-                        if new_x_list.__getitem__(len(new_x_list) - 1) == "y":
-                            if x_equ[element_index + 1] == "y":
-                                answer = sign(true_value, true_value)
+                    try:
+                        if x_equ[element_index] == sign_name:
+                            self.solved = True
+                            if new_x_list.__getitem__(len(new_x_list) - 1) == "y":
+                                if x_equ[element_index + 1] == "y":
+                                    answer = sign(true_value, true_value)
+                                else:
+                                    answer = sign(true_value, x_equ[element_index + 1])
+                            elif x_equ[element_index + 1] == "y":
+                                answer = sign(new_x_list.__getitem__(len(new_x_list) - 1), true_value)
                             else:
-                                answer = sign(true_value, x_equ[element_index + 1])
-                        elif x_equ[element_index + 1] == "y":
-                            answer = sign(new_x_list.__getitem__(len(new_x_list) - 1), true_value)
+                                answer = sign(new_x_list.__getitem__(len(new_x_list) - 1),
+                                              x_equ[element_index + 1])
+                            new_x_list.pop()
+                            new_x_list.append(answer)
                         else:
-                            answer = sign(new_x_list.__getitem__(len(new_x_list) - 1),
-                                               x_equ[element_index + 1])
-                        new_x_list.pop()
-                        new_x_list.append(answer)
-                    else:
-                        if self.solved:
-                            self.solved = False
-                        else:
-                            new_x_list.append(x_equ[element_index])
+                            if self.solved:
+                                self.solved = False
+                            else:
+                                new_x_list.append(x_equ[element_index])
+                    except:
+                        pass
                 x_equ = new_x_list
                 new_x_list = []
             try:
@@ -126,36 +132,39 @@ class Calculator:
                 for sign in sign_list:
                     sign_name = sign.__name__
                     for element_index in range(0, len(x_y_equation)):
-                        if x_y_equation[element_index] == sign_name:
-                            self.solved = True
-                            if new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "y":
-                                if x_y_equation[element_index + 1] == "y":
-                                    answer = sign(true_value_y, true_value_y)
+                        try:
+                            if x_y_equation[element_index] == sign_name:
+                                self.solved = True
+                                if new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "y":
+                                    if x_y_equation[element_index + 1] == "y":
+                                        answer = sign(true_value_y, true_value_y)
+                                    elif x_y_equation[element_index + 1] == "x":
+                                        answer = sign(true_value_y, true_value_x)
+                                    else:
+                                        answer = sign(true_value_y, x_y_equation[element_index + 1])
+                                elif new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "x":
+                                    if x_y_equation[element_index + 1] == "y":
+                                        answer = sign(true_value_x, true_value_y)
+                                    elif x_y_equation[element_index + 1] == "x":
+                                        answer = sign(true_value_x, true_value_x)
+                                    else:
+                                        answer = sign(true_value_x, x_y_equation[element_index + 1])
+                                elif x_y_equation[element_index + 1] == "y":
+                                    answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_y)
                                 elif x_y_equation[element_index + 1] == "x":
-                                    answer = sign(true_value_y, true_value_x)
+                                    answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_x)
                                 else:
-                                    answer = sign(true_value_y, x_y_equation[element_index + 1])
-                            elif new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "x":
-                                if x_y_equation[element_index + 1] == "y":
-                                    answer = sign(true_value_x, true_value_y)
-                                elif x_y_equation[element_index + 1] == "x":
-                                    answer = sign(true_value_x, true_value_x)
+                                    answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1),
+                                                  x_y_equation[element_index + 1])
+                                new_x_y_list.pop()
+                                new_x_y_list.append(answer)
+                            else:
+                                if self.solved:
+                                    self.solved = False
                                 else:
-                                    answer = sign(true_value_x, x_y_equation[element_index + 1])
-                            elif x_y_equation[element_index + 1] == "y":
-                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_y)
-                            elif x_y_equation[element_index + 1] == "x":
-                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_x)
-                            else:
-                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1),
-                                              x_y_equation[element_index + 1])
-                            new_x_y_list.pop()
-                            new_x_y_list.append(answer)
-                        else:
-                            if self.solved:
-                                self.solved = False
-                            else:
-                                new_x_y_list.append(x_y_equation[element_index])
+                                    new_x_y_list.append(x_y_equation[element_index])
+                        except:
+                            pass
                     x_y_equation = new_x_y_list
                     new_x_y_list = []
                 if x_y_equation [0] == 0:
@@ -173,36 +182,39 @@ class Calculator:
                 for sign in sign_list:
                     sign_name = sign.__name__
                     for element_index in range(0, len(x_y_equation)):
-                        if x_y_equation[element_index] == sign_name:
-                            self.solved = True
-                            if new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "y":
-                                if x_y_equation[element_index + 1] == "y":
-                                    answer = sign(true_value_y, true_value_y)
+                        try:
+                            if x_y_equation[element_index] == sign_name:
+                                self.solved = True
+                                if new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "y":
+                                    if x_y_equation[element_index + 1] == "y":
+                                        answer = sign(true_value_y, true_value_y)
+                                    elif x_y_equation[element_index + 1] == "x":
+                                        answer = sign(true_value_y, true_value_x)
+                                    else:
+                                        answer = sign(true_value_y, x_y_equation[element_index + 1])
+                                elif new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "x":
+                                    if x_y_equation[element_index + 1] == "y":
+                                        answer = sign(true_value_x, true_value_y)
+                                    elif x_y_equation[element_index + 1] == "x":
+                                        answer = sign(true_value_x, true_value_x)
+                                    else:
+                                        answer = sign(true_value_x, x_y_equation[element_index + 1])
+                                elif x_y_equation[element_index + 1] == "y":
+                                    answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_y)
                                 elif x_y_equation[element_index + 1] == "x":
-                                    answer = sign(true_value_y, true_value_x)
+                                    answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_x)
                                 else:
-                                    answer = sign(true_value_y, x_y_equation[element_index + 1])
-                            elif new_x_y_list.__getitem__(len(new_x_y_list) - 1) == "x":
-                                if x_y_equation[element_index + 1] == "y":
-                                    answer = sign(true_value_x, true_value_y)
-                                elif x_y_equation[element_index + 1] == "x":
-                                    answer = sign(true_value_x, true_value_x)
+                                    answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1),
+                                                  x_y_equation[element_index + 1])
+                                new_x_y_list.pop()
+                                new_x_y_list.append(answer)
+                            else:
+                                if self.solved:
+                                    self.solved = False
                                 else:
-                                    answer = sign(true_value_x, x_y_equation[element_index + 1])
-                            elif x_y_equation[element_index + 1] == "y":
-                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_y)
-                            elif x_y_equation[element_index + 1] == "x":
-                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1), true_value_x)
-                            else:
-                                answer = sign(new_x_y_list.__getitem__(len(new_x_y_list) - 1),
-                                              x_y_equation[element_index + 1])
-                            new_x_y_list.pop()
-                            new_x_y_list.append(answer)
-                        else:
-                            if self.solved:
-                                self.solved = False
-                            else:
-                                new_x_y_list.append(x_y_equation[element_index])
+                                    new_x_y_list.append(x_y_equation[element_index])
+                        except:
+                            pass
                     x_y_equation = new_x_y_list
                     new_x_y_list = []
                 if x_y_equation [0] == 0:
