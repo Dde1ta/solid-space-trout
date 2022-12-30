@@ -1,10 +1,12 @@
 class Calculator:
+
     def __init__(self, equation, units, sub_units):
         self.answer = 0
         self.solved = False
         self.sub_unit = sub_units
         self.equation = equation
         self.units = units
+
     def solve(self,equ):
         to_return = []
         if "x" in equ and "y" in equ:
@@ -18,29 +20,46 @@ class Calculator:
             self.solve_in_y_variables(self.units)
             to_return=self.solve_in_y(equ)
         return to_return
+
     def solve_in_x_variables(self,units):
         self._x = -1 * units
         self.x_ = units + 1
+
     def solve_in_y_variables(self,units):
         self._y = -1 * units
         self.y_ = units + 1
+
+    def has_brackets(self,equ):
+        for i in equ:
+            if type([]) == type(i):
+                has_bracket = True
+                break
+            else:
+                pass
+        return has_bracket
+
     def power(self,a,b):
         return a**b
+
     def divide(self,a,b):
         try:
             return a/b
         except:
             return None
+
     def multiply(self,a,b):
         return a*b
+
     def add(self,a,b):
         return a+b
     def subtract(self,a,b):
         return a-b
+
     def solve_in_x(self,orignal_equ):
         sign_list = [self.power,self.divide,self.multiply,self.add,self.subtract]
         y_list = []
         for x in range(self._x,self.x_):
+
             true_value = x / self.sub_unit
             y_equ = orignal_equ
             new_y_list = []
@@ -76,6 +95,7 @@ class Calculator:
             except:
                 pass
         return y_list
+
     def solve_in_a_single_x(self, value, equ):
         y_equ = equ
         sign_list = [self.power,self.divide,self.multiply,self.add,self.subtract]
@@ -110,6 +130,7 @@ class Calculator:
 
             new_y_list = []
         return y_equ[0]
+
     def solve_in_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
         x_list = []
@@ -149,6 +170,7 @@ class Calculator:
             except:
                 pass
         return x_list
+
     def solve_in_a_single_y(self,value,equ):
         x_equ = equ
         sign_list = [self.power,self.divide,self.multiply,self.add,self.subtract]
@@ -182,6 +204,7 @@ class Calculator:
             x_equ = new_x_list
             new_x_list = []
         return x_equ[0]
+
     def solve_in_x_and_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
         x_y_equation = orignal_equ

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="fixed infinity">
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="adding bracket">
+      <change afterPath="$PROJECT_DIR$/Grapher_me/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/calculator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/experiment.py" afterDir="false" />
@@ -259,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672369023369</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="adding bracket">
+      <created>1672371566716</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672371566716</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -313,6 +321,7 @@
     <MESSAGE value="added menu" />
     <MESSAGE value="Fixed delete" />
     <MESSAGE value="fixed infinity" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed infinity" />
+    <MESSAGE value="adding bracket" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding bracket" />
   </component>
 </project>
