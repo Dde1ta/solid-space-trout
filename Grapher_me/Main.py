@@ -10,7 +10,10 @@ class Main:
         self.master = master
         self.master.geometry(str(master.winfo_screenwidth()) + 'x' + str(master.winfo_screenheight()))
         self.master.state('zoomed')
+        dpi = master.winfo_fpixels('1i')
 
+        factor = dpi / 72
+        master.tk.call('tk', 'scaling', factor)
         self.variables_for_graphs()
         self.variables_for_inputer()
         self.variables_for_graphs_menu()
