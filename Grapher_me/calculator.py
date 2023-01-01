@@ -82,7 +82,7 @@ class Calculator:
             y_equ = []
             for i in orignal_equ:
                 if type(i) == type([]):
-                    y_equ.append(self.solve_in_a_single_x(x,i))
+                    y_equ.append(self.solve_in_a_single_x(true_value,i))
                 else:
                     y_equ.append(i)
             new_y_list = []
@@ -162,7 +162,7 @@ class Calculator:
             if self.has_brackets(orignal_equ):
                 for i in orignal_equ:
                     if type(i) == type([]):
-                        x_equ.append(self.solve_in_a_single_y(y,i))
+                        x_equ.append(self.solve_in_a_single_y(true_value,i))
                     else:
                         x_equ.append(i)
             new_x_list = []
