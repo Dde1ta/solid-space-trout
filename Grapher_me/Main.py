@@ -531,10 +531,10 @@ class Main:
     def close_bracket_botton_presses(self):
         self.open_bracket = False
         self.show_string += ")"
-        self.bracket_list = []
         self.adding_digites = False
         self.equation_label.config(text=self.show_string)
         self.Equation_list.append(self.bracket_list)
+        self.bracket_list = []
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=1000, y=450)

@@ -11,20 +11,22 @@ class Calculator:
         to_return = []
         if self.has_brackets(equ):
             for i in equ:
-                if "x" in i and "y" in i:
-                    self.solve_in_x_variables(self.units)
-                    self.solve_in_y_variables(self.units)
-                    to_return = self.solve_in_x_and_y(equ)
-                    break
-                elif "x" in i:
-                    self.solve_in_x_variables(self.units)
-                    to_return = self.solve_in_x(equ)
-                    break
-                elif "y" in i:
-                    self.solve_in_y_variables(self.units)
-                    to_return = self.solve_in_y(equ)
-                    break
-
+                try:
+                    if "x" in i and "y" in i:
+                        self.solve_in_x_variables(self.units)
+                        self.solve_in_y_variables(self.units)
+                        to_return = self.solve_in_x_and_y(equ)
+                        break
+                    elif "x" in i:
+                        self.solve_in_x_variables(self.units)
+                        to_return = self.solve_in_x(equ)
+                        break
+                    elif "y" in i:
+                        self.solve_in_y_variables(self.units)
+                        to_return = self.solve_in_y(equ)
+                        break
+                except:
+                    pass
         elif "x" in equ and "y" in equ:
             self.solve_in_x_variables(self.units)
             self.solve_in_y_variables(self.units)
