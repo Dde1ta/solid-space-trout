@@ -8,6 +8,9 @@ import random as r
 class Main:
     def __init__(self,master = None):
         self.master = master
+        self.SCREEN_HEIGHT = master.winfo_screenheight()
+        self.SCREEN_WIDHT = master.winfo_screenwidth()
+        print(self.SCREEN_HEIGHT,self.SCREEN_WIDHT)
         self.master.geometry(str(master.winfo_screenwidth()) + 'x' + str(master.winfo_screenheight()))
         self.master.state('zoomed')
         dpi = master.winfo_fpixels('1i')
@@ -19,14 +22,14 @@ class Main:
         self.variables_for_graphs_menu()
         self.place_frames()
     def variables_for_graphs(self):
-        self.HEIGHT = 1000
-        self.WIDHT = 1000
+        self.HEIGHT = self.SCREEN_HEIGHT*(1000/1080)
+        self.WIDHT = self.SCREEN_WIDHT*(1000/1920)
 
         self.graph_frame = tk.Frame(self.master, height=self.HEIGHT, width=self.WIDHT)
         self.graph_canvas = tk.Canvas(self.graph_frame, width=self.WIDHT, height=self.HEIGHT, highlightthickness=1,
                                       highlightbackground="white", bg="black")
-        self.graph_canvas.create_line(500, 0, 500, 1000, width=2, fill="white")  # Y_axis
-        self.graph_canvas.create_line(0, 500, 1000, 500, width=2, fill="white")  # X_axis
+        self.graph_canvas.create_line(self.WIDHT/2, 0, self.WIDHT/2, self.HEIGHT, width=2, fill="white")  # Y_axis
+        self.graph_canvas.create_line(0, self.HEIGHT/2, self.WIDHT, self.HEIGHT/2, width=2, fill="white")  # X_axis
         # list of the hex char. for random colour genration
         self.hex_list = [ '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c']
         self.show_string = ''
@@ -40,7 +43,8 @@ class Main:
         self.place_coords()
         self.graph_canvas.pack()
     def variables_for_inputer(self):
-        self.input_frame = tk.Frame(self.master, height=580, width=920, bg="black")
+        self.input_frame = tk.Frame(self.master, height=self.SCREEN_HEIGHT*(580/1080),
+                                    width=self.SCREEN_WIDHT*(920/1920), bg="black")
         self.Equation_list = []
         self.show_string = ''
         self.tag_string = ""
@@ -51,7 +55,7 @@ class Main:
         self.bracket_list = []
         self.before_bracket = ""
     def variables_for_graphs_menu(self):
-        self.menu_frame = tk.Frame(self.master,height = 480,width = 920,bg = "black" )
+        self.menu_frame = tk.Frame(self.master,height = self.SCREEN_HEIGHT*(480/1080),width = self.SCREEN_WIDHT*(920/1920),bg = "black" )
         self.number = 0
         self.object_dic = {}
     def create_new_object_menu(self,string,frame,color):
@@ -181,10 +185,10 @@ class Main:
 
         # places each label in reveres
         for n in range(11):
-            self.y_axis_values_list_positive[n].place(x = 510,y = n*50-10)
+            self.y_axis_values_list_positive[n].place(x = self.SCREEN_WIDHT*(510/1980),y = self.SCREEN_HEIGHT*((n*50)/1080)-14)
 
         for n in range(10):
-            self.y_axis_values_list_negative[n].place(x=510, y=((n+11) * 50)-14)
+            self.y_axis_values_list_negative[n].place(x=self.SCREEN_WIDHT*(510/1980), y=self.SCREEN_HEIGHT*((((n+11) * 50))/1080) -14)
     def x_axis_values(self):
         """
         Creates the x-axis numbers
@@ -195,9 +199,9 @@ class Main:
         self.x_axis_values_list_negative = [tk.Label(self.graph_frame, text=i, bg="black", fg="white") for i in
                                             range(-10,0)]
         for n in range(10):
-            self.x_axis_values_list_negative[n].place(x = 50*n -8,y = 510)
+            self.x_axis_values_list_negative[n].place(x = self.SCREEN_WIDHT*(50*n)/1980 -8,y = self.SCREEN_HEIGHT*(510/1080))
         for n in range(9):
-            self.x_axis_values_list_positive[n].place(x = (50 * (n+10)) +40, y = 510)
+            self.x_axis_values_list_positive[n].place(x =  self.SCREEN_WIDHT*(50 * (n+10))/1980, y = self.SCREEN_HEIGHT*(510/1080))
     def calculate(self,equation):
         """
         calls the calculator module
