@@ -13,7 +13,7 @@ class Main:
         dpi = master.winfo_fpixels('1i')
 
         factor = dpi / 72
-        master.tk.call('tk', 'scaling', factor)
+        master.tk.call('tk', 'scaling', 2.0)
         self.variables_for_graphs()
         self.variables_for_inputer()
         self.variables_for_graphs_menu()
@@ -260,7 +260,6 @@ class Main:
                 except:
                     self.graph_canvas.update()
         self.on_line("f")
-
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -443,31 +442,78 @@ class Main:
         self.adding_digites = False
     def delete_botton_pressed(self):
         show_string_new = ''
-        if type(self.Equation_list[-1]) == type(1):
-            if self.Equation_list[-1]/10 > 10 :
-                pass
-            else:
-                self.adding_digites = False
-        try:
-            self.Equation_list.pop()
-        except:
-            pass
-        for i in self.Equation_list:
-            if i == "power":
-                show_string_new += "**"
-            elif i == "multiply":
-                show_string_new += "*"
-            elif i == "divide":
-                show_string_new += "/"
-            elif i == "add":
-                show_string_new += "+"
-            elif i == "subtract":
-                show_string_new += "-"
-            else:
-                show_string_new += str(i)
+        found = False
 
-        self.show_string = show_string_new
-        self.equation_label.config(text = self.show_string)
+        if not self.open_bracket:
+            if type(self.Equation_list[-1]) == type(1):
+                if self.Equation_list[-1] / 10 > 10:
+                    pass
+                else:
+                    self.adding_digites = False
+            try:
+                self.Equation_list.pop()
+            except:
+                pass
+            for i in self.Equation_list:
+                if i == "power":
+                    show_string_new += "**"
+                elif i == "multiply":
+                    show_string_new += "*"
+                elif i == "divide":
+                    show_string_new += "/"
+                elif i == "add":
+                    show_string_new += "+"
+                elif i == "subtract":
+                    show_string_new += "-"
+                else:
+                    show_string_new += str(i)
+
+            self.show_string = show_string_new
+            self.equation_label.config(text=self.show_string)
+        else:
+            self.before_bracket = ""
+            for i in self.Equation_list:
+                if i == "power":
+                    self.before_bracket += "**"
+                elif i == "multiply":
+                    self.before_bracket += "*"
+                elif i == "divide":
+                    self.before_bracket += "/"
+                elif i == "add":
+                    self.before_bracket += "+"
+                elif i == "subtract":
+                    self.before_bracket += "-"
+                else:
+                    self.before_bracket += str(i)
+            self.before_bracket += '('
+            try:
+                if type(self.bracket_list[-1]) == type(1):
+                    if self.bracket_list[-1] / 10 > 10:
+                        pass
+                    else:
+                        self.adding_digites = False
+            except:
+                pass
+            try:
+                self.bracket_list.pop()
+            except:
+                self.open_bracket = False
+            for i in self.bracket_list:
+                if i == "power":
+                    show_string_new += "**"
+                elif i == "multiply":
+                    show_string_new += "*"
+                elif i == "divide":
+                    show_string_new += "/"
+                elif i == "add":
+                    show_string_new += "+"
+                elif i == "subtract":
+                    show_string_new += "-"
+                else:
+                    show_string_new += str(i)
+            self.show_string = self.before_bracket
+            self.show_string += show_string_new
+            self.equation_label.config(text=self.show_string)
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
@@ -477,13 +523,16 @@ class Main:
             self.botton_num_negative.config(bg = "light gray",fg="black")
         self.adding_digites = False
     def open_bracket_botton_pressed(self):
+        self.adding_digites = False
+
         self.open_bracket = True
         self.show_string += "("
         self.equation_label.config(text=self.show_string)
-
     def close_bracket_botton_presses(self):
         self.open_bracket = False
         self.show_string += ")"
+        self.bracket_list = []
+        self.adding_digites = False
         self.equation_label.config(text=self.show_string)
         self.Equation_list.append(self.bracket_list)
     def place_frames(self):
