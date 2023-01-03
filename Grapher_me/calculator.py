@@ -159,14 +159,15 @@ class Calculator:
     def solve_in_y(self,orignal_equ):
         sign_list = [self.power, self.divide, self.multiply, self.add, self.subtract]
         x_list = []
+
         for y in range(self._y, self.y_):
             true_value = y / self.sub_unit
-            if self.has_brackets(orignal_equ):
-                for i in orignal_equ:
-                    if type(i) == type([]):
-                        x_equ.append(self.solve_in_a_single_y(true_value,i))
-                    else:
-                        x_equ.append(i)
+            x_equ = []
+            for i in orignal_equ:
+                if type(i) == type([]):
+                     x_equ.append(self.solve_in_a_single_y(true_value,i))
+                else:
+                    x_equ.append(i)
             new_x_list = []
             for sign in sign_list:
                 sign_name = sign.__name__
