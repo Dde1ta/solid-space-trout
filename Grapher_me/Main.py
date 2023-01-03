@@ -4,7 +4,6 @@ import pyautogui as pa
 from calculator import Calculator as Cal
 from inputer import Inputer_frame
 import random as r
-
 class Main:
     def __init__(self,master = None):
         self.master = master
@@ -72,10 +71,10 @@ class Main:
             list = self.object_dic[id]
             list[0].place(x = 0,y = self.SCREEN_HEIGHT*((list[3]*80)/1080),
                           height = self.SCREEN_HEIGHT*(80/1080),width=self.SCREEN_WIDHT*(80/1920))
-            list[1].place(x=self.SCREEN_WIDHT*(80/1980),y=self.SCREEN_HEIGHT*((list[3]*80)/1080),
-                          height = self.SCREEN_HEIGHT*(80/1080),width=self.SCREEN_WIDHT*(760/1920))
-            list[2].place(x=self.SCREEN_WIDHT*(840/1980), y=self.SCREEN_HEIGHT*((list[3]*80)/1080),
-                          height = self.SCREEN_HEIGHT*(80/1080),width=self.SCREEN_WIDHT*(80/1920))
+            list[1].place(x=self.SCREEN_WIDHT*(80 / 1920), y=self.SCREEN_HEIGHT * ((list[3] * 80) / 1080),
+                          height = self.SCREEN_HEIGHT*(80/1080), width=self.SCREEN_WIDHT*(760/1920))
+            list[2].place(x=self.SCREEN_WIDHT*(840 / 1920), y=self.SCREEN_HEIGHT * ((list[3] * 80) / 1080),
+                          height = self.SCREEN_HEIGHT*(80/1080), width=self.SCREEN_WIDHT*(80/1920))
     def delete_row_in_menu(self,id):
         found = False
         dic = {}
@@ -104,123 +103,124 @@ class Main:
         :return:
         """
         self.equation_label = tk.Label(frame,bg = "black",fg = "white")
-        self.equation_label.place(x=0,y=0,
-                                  width=self.SCREEN_WIDHT*(920/1980),
+        self.equation_label.place(x=0, y=0,
+                                  width=self.SCREEN_WIDHT*(920 / 1920),
                                   height=self.SCREEN_HEIGHT*(80/1080))
         self.botton1 = tk.Button(frame, text=1, command=lambda: self.number_botton_pressed(self.botton1))
         self.botton1.place(x=0,
                            y=self.SCREEN_HEIGHT*(180/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton2 = tk.Button(frame, text=2, command=lambda: self.number_botton_pressed(self.botton2))
-        self.botton2.place(x=self.SCREEN_WIDHT*(184/1980),
+        self.botton2.place(x=self.SCREEN_WIDHT*(184 / 1920),
                            y=self.SCREEN_HEIGHT*(180/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton3 = tk.Button(frame, text=3, command=lambda: self.number_botton_pressed(self.botton3))
-        self.botton3.place(x=self.SCREEN_WIDHT*(368/1980),
+        self.botton3.place(x=self.SCREEN_WIDHT*(368 / 1920),
                            y=self.SCREEN_HEIGHT*(180/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton4 = tk.Button(frame, text=4, command=lambda: self.number_botton_pressed(self.botton4))
         self.botton4.place(x=0,
                            y=self.SCREEN_HEIGHT*(280/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton5 = tk.Button(frame, text=5, command=lambda: self.number_botton_pressed(self.botton5))
-        self.botton5.place(x=self.SCREEN_WIDHT*(184/1980),
+        self.botton5.place(x=self.SCREEN_WIDHT*(184 / 1920),
                            y=self.SCREEN_HEIGHT*(280/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton6 = tk.Button(frame, text=6, command=lambda: self.number_botton_pressed(self.botton6))
-        self.botton6.place(x=self.SCREEN_WIDHT*(368/1980),
+        self.botton6.place(x=self.SCREEN_WIDHT*(368 / 1920),
                            y=self.SCREEN_HEIGHT*(280/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton7 = tk.Button(frame, text=7, command=lambda: self.number_botton_pressed(self.botton7))
         self.botton7.place(x=0,
                            y=self.SCREEN_HEIGHT*(380/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
+
         self.botton8 = tk.Button(frame, text=8, command=lambda: self.number_botton_pressed(self.botton8))
-        self.botton8.place(x=self.SCREEN_WIDHT*(184/1980),
+        self.botton8.place(x=self.SCREEN_WIDHT*(184 / 1920),
                            y=self.SCREEN_HEIGHT*(380/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton9 = tk.Button(frame, text=9, command=lambda: self.number_botton_pressed(self.botton9))
-        self.botton9.place(x=self.SCREEN_WIDHT*(368/1980),
+        self.botton9.place(x=self.SCREEN_WIDHT*(368 / 1920),
                            y=self.SCREEN_HEIGHT*(380/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton0 = tk.Button(frame, text=0, command=lambda: self.number_botton_pressed(self.botton0))
         self.botton0.place(x=0,
                            y=self.SCREEN_HEIGHT*(480/1080),
-                           width=self.SCREEN_WIDHT*(184/1980),
+                           width=self.SCREEN_WIDHT*(184 / 1920),
                            height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_y = tk.Button(frame, text="y", command=self.y_botton_pressed)
-        self.botton_y.place(x=self.SCREEN_WIDHT*(552/1980),
+        self.botton_y.place(x=self.SCREEN_WIDHT*(552 / 1920),
                             y=self.SCREEN_HEIGHT*(80/1080),
-                            width=self.SCREEN_WIDHT*(184/1980),
+                            width=self.SCREEN_WIDHT*(184 / 1920),
                             height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_bracket_open = tk.Button(frame, text="(",command=self.open_bracket_botton_pressed)
-        self.botton_bracket_open.place(x=self.SCREEN_WIDHT*(552/1980),
+        self.botton_bracket_open.place(x=self.SCREEN_WIDHT*(552 / 1920),
                                        y=self.SCREEN_HEIGHT*(180/1080),
-                                       width=self.SCREEN_WIDHT*(184/1980),
+                                       width=self.SCREEN_WIDHT*(184 / 1920),
                                        height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_bracket_close = tk.Button(frame, text=")",command=self.close_bracket_botton_presses)
-        self.botton_bracket_close.place(x=self.SCREEN_WIDHT*(552/1980),
+        self.botton_bracket_close.place(x=self.SCREEN_WIDHT*(552 / 1920),
                                         y=self.SCREEN_HEIGHT*(280/1080),
-                                        width=self.SCREEN_WIDHT*(184/1980),
+                                        width=self.SCREEN_WIDHT*(184 / 1920),
                                         height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_decimel = tk.Button(frame, text=".")
-        self.botton_decimel.place(x=self.SCREEN_WIDHT*(552/1980),
+        self.botton_decimel.place(x=self.SCREEN_WIDHT*(552 / 1920),
                                   y=self.SCREEN_HEIGHT*(380/1080),
-                                  width=self.SCREEN_WIDHT*(184/1980),
+                                  width=self.SCREEN_WIDHT*(184 / 1920),
                                   height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_divide = tk.Button(frame, text="/", command=self.divide_botton_pressed)
-        self.botton_divide.place(x=self.SCREEN_WIDHT*(736/1980),
+        self.botton_divide.place(x=self.SCREEN_WIDHT*(736 / 1920),
                                  y=self.SCREEN_HEIGHT*(180/1080),
-                                 width=self.SCREEN_WIDHT*(184/1980),
+                                 width=self.SCREEN_WIDHT*(184 / 1920),
                                  height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_multiply = tk.Button(frame, text="*", command=self.multiply_botton_pressed)
-        self.botton_multiply.place(x=self.SCREEN_WIDHT*(736/1980),
+        self.botton_multiply.place(x=self.SCREEN_WIDHT*(736 / 1920),
                                    y=self.SCREEN_HEIGHT*(280/1080),
-                                   width=self.SCREEN_WIDHT*(184/1980),
+                                   width=self.SCREEN_WIDHT*(184 / 1920),
                                    height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_add = tk.Button(frame, text="+", command=self.add_botton_pressed)
-        self.botton_add.place(x=self.SCREEN_WIDHT*(736/1980),
+        self.botton_add.place(x=self.SCREEN_WIDHT*(736 / 1920),
                               y=self.SCREEN_HEIGHT*(380/1080),
-                              width=self.SCREEN_WIDHT*(184/1980),
+                              width=self.SCREEN_WIDHT*(184 / 1920),
                               height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_subtract = tk.Button(frame, text="-", command=self.subtract_botton_pressed)
-        self.botton_subtract.place(x=self.SCREEN_WIDHT*(736/1980),
+        self.botton_subtract.place(x=self.SCREEN_WIDHT*(736 / 1920),
                                    y=self.SCREEN_HEIGHT*(480/1080),
-                                   width=self.SCREEN_WIDHT*(184/1980),
+                                   width=self.SCREEN_WIDHT*(184 / 1920),
                                    height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_power = tk.Button(frame, text="^", command=self.power_botton_pressed)
-        self.botton_power.place(x=self.SCREEN_WIDHT*(736/1980),
+        self.botton_power.place(x=self.SCREEN_WIDHT*(736 / 1920),
                                 y=self.SCREEN_HEIGHT*(80/1080),
-                                width=self.SCREEN_WIDHT*(184/1980),
+                                width=self.SCREEN_WIDHT*(184 / 1920),
                                 height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_x = tk.Button(frame, text="x", command=self.x_botton_pressed)
-        self.botton_x.place(x=self.SCREEN_WIDHT*(368/1980),
+        self.botton_x.place(x=self.SCREEN_WIDHT*(368 / 1920),
                             y=self.SCREEN_HEIGHT*(80/1080),
-                            width=self.SCREEN_WIDHT*(184/1980),
+                            width=self.SCREEN_WIDHT*(184 / 1920),
                             height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_plot = tk.Button(frame, text="Plot", command=self.polt_botton_pressed)
-        self.botton_plot.place(x=self.SCREEN_WIDHT*(184/1980),
+        self.botton_plot.place(x=self.SCREEN_WIDHT*(184 / 1920),
                                y=self.SCREEN_HEIGHT*(480/1080),
-                               width=self.SCREEN_WIDHT*(552/1980),
+                               width=self.SCREEN_WIDHT*(552 / 1920),
                                height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_num_negative = tk.Button(frame, text="(-)", command=self.negative_botton_pressed)
         self.botton_num_negative.place(x=0,
                                        y=self.SCREEN_HEIGHT*(80/1080),
-                                       width=self.SCREEN_WIDHT*(184/1980),
+                                       width=self.SCREEN_WIDHT*(184 / 1920),
                                        height=self.SCREEN_HEIGHT*(100/1080))
         self.botton_delete = tk.Button(frame, text="Delete",command = self.delete_botton_pressed)
-        self.botton_delete.place(x=self.SCREEN_WIDHT*(184/1980),
+        self.botton_delete.place(x=self.SCREEN_WIDHT*(184 / 1920),
                                  y=self.SCREEN_HEIGHT*(80/1080),
-                                 width=self.SCREEN_WIDHT*(184/1980),
+                                 width=self.SCREEN_WIDHT*(184 / 1920),
                                  height=self.SCREEN_HEIGHT*(100/1080))
     def vertical_grid(self):
         """
@@ -259,11 +259,11 @@ class Main:
 
         # places each label in reveres
         for n in range(11):
-            self.y_axis_values_list_positive[n].place(x = self.SCREEN_WIDHT*(510/1980),
+            self.y_axis_values_list_positive[n].place(x = self.SCREEN_WIDHT*(510/1920),
                                                       y = self.SCREEN_HEIGHT*((n*self.SCREEN_WIDHT*(50/1980))/1080)-14)
 
         for n in range(10):
-            self.y_axis_values_list_negative[n].place(x=self.SCREEN_WIDHT*(510/1980),
+            self.y_axis_values_list_negative[n].place(x=self.SCREEN_WIDHT*(510/1920),
                                                       y=self.SCREEN_HEIGHT*((((n+11) * self.SCREEN_WIDHT*(50/1980)))/1080) -14)
     def x_axis_values(self):
         """
@@ -271,13 +271,13 @@ class Main:
         :return:
         """
         self.x_axis_values_list_positive = [tk.Label(self.graph_frame, text=i, bg="black", fg="white") for i in
-                                            range(1,10)]
+                                            range(1,12)]
         self.x_axis_values_list_negative = [tk.Label(self.graph_frame, text=i, bg="black", fg="white") for i in
                                             range(-10,0)]
         for n in range(10):
-            self.x_axis_values_list_negative[n].place(x = self.SCREEN_WIDHT*(self.SCREEN_HEIGHT*(50/1080)*n)/1980 -8
+            self.x_axis_values_list_negative[n].place(x = self.SCREEN_WIDHT*(self.SCREEN_HEIGHT*(50/1080)*n)/1980
                                                       ,y = self.SCREEN_HEIGHT*(510/1080))
-        for n in range(9):
+        for n in range(10):
             self.x_axis_values_list_positive[n].place(x =  self.SCREEN_WIDHT*(self.SCREEN_HEIGHT*(50/1080) * (n+10))/1980 +self.SCREEN_HEIGHT*(50/1080) ,
                                                       y = self.SCREEN_HEIGHT*(510/1080))
     def calculate(self,equation):
@@ -619,8 +619,8 @@ class Main:
         self.bracket_list = []
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
-        self.input_frame.place(x=1000, y=450)
-        self.menu_frame.place(x = 1000, y= 0)
+        self.input_frame.place(x=self.SCREEN_WIDHT*(1000/1920), y=self.SCREEN_HEIGHT*(450/1080))
+        self.menu_frame.place(x = self.SCREEN_WIDHT*(1000/1920), y= 0)
 
 if __name__ == "__main__":
     root = tk.Tk()
