@@ -10,21 +10,26 @@ class Calculator:
     def solve(self,equ):
         to_return = []
         if self.has_brackets(equ):
+            print("yep")
             for i in equ:
                 try:
-                    if "x" in i and "y" in i:
-                        self.solve_in_x_variables(self.units)
-                        self.solve_in_y_variables(self.units)
-                        to_return = self.solve_in_x_and_y(equ)
-                        break
-                    elif "x" in i:
-                        self.solve_in_x_variables(self.units)
-                        to_return = self.solve_in_x(equ)
-                        break
-                    elif "y" in i:
-                        self.solve_in_y_variables(self.units)
-                        to_return = self.solve_in_y(equ)
-                        break
+                    if type(i) == type([]):
+
+                        if "x" in i and "y" in i:
+
+                            self.solve_in_x_variables(self.units)
+                            self.solve_in_y_variables(self.units)
+                            to_return = self.solve_in_x_and_y(equ)
+                            break
+                        elif "x" in i:
+
+                            self.solve_in_x_variables(self.units)
+                            to_return = self.solve_in_x(equ)
+                            break
+                        elif "y" in i:
+                            self.solve_in_y_variables(self.units)
+                            to_return = self.solve_in_y(equ)
+                            break
                 except:
                     pass
         elif "x" in equ and "y" in equ:
