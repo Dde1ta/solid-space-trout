@@ -11,6 +11,16 @@ class Calculator:
         self.x_px = 250
         self.pixles = 25
 
+    def solve(self,string):
+        if "x" in string and "y" in string:
+            to_return = self.solve_final_x_y(string)
+        elif "x" in string:
+            to_return = self.solve_final_x(string)
+        elif "y" in string:
+            to_return = self.solve_final_y(string)
+
+        return to_return
+
     def solve_final_x(self,string):
         points_list = []
         for x in range(self._x_px,self.x_px+1):
@@ -56,7 +66,7 @@ class Calculator:
                     points_list.append([x / 25, y / 25])
         return points_list
 
-if __name__ == "__main__":
-    cal = Calculator()
-    points = cal.solve_final_x("(x**2)")
-    print(points)
+# if __name__ == "__main__":
+#     cal = Calculator()
+#     points = cal.solve_final_x("(x**2)")
+#     print(points)
