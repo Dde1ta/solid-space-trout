@@ -353,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673075270484</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Change Plot accordingly">
+      <created>1674213383603</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1674213383604</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,6 +425,7 @@
     <MESSAGE value="scaling" />
     <MESSAGE value="added BRACKETSSSSSSSSSSSSSS" />
     <MESSAGE value="fixed  resolution" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed  resolution" />
+    <MESSAGE value="Change Plot accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change Plot accordingly" />
   </component>
 </project>
