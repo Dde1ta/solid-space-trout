@@ -45,6 +45,7 @@ class Main:
         self.input_frame = tk.Frame(self.master, height=self.SCREEN_HEIGHT*(580/1080),
                                     width=self.SCREEN_WIDHT*(920/1920), bg="black")
         self.Equation_list = []
+        self.equation = ""
         self.show_string = ''
         self.tag_string = ""
         self.inputer_objects(self.input_frame)
@@ -283,10 +284,10 @@ class Main:
     def calculate(self,equation):
         """
         calls the calculator module
-        :param equation:
+        :param equation:str
         :return: the list of points
         """
-        cal = Cal(equation, 500, 50)
+        cal = Cal()
         return cal.solve(equation)
     def plot(self,equation):
         """
@@ -298,50 +299,25 @@ class Main:
         line_color = self.random_color()
         n= 0
         self.tag_string = ""
-        for char in self.show_string:
+        for char in self.equation:
             if char == "^":
                 self.tag_string+="**"
             else:
                 self.tag_string+=char
 
-        self.create_new_object_menu(self.show_string,self.menu_frame,line_color)
+        self.create_new_object_menu(self.equation,self.menu_frame,line_color)
         print(self.points_list)
 
-        if "x" in equation and "y" in equation:
-            print("yes")
-            for i in range(0, len(self.points_list)):
-                try:
-                    # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                    self.graph_canvas.create_line(self.points_list[i][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  self.points_list[i + 1][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i + 1][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  fill=line_color, tags=self.show_string)
-                    self.graph_canvas.update()
-                    self.graph_frame.update()
-                except:
-                    pass
-                    # self.graph_canvas.create_line(self.points_list[i][0] + 500,
-                    #                               -1 * self.points_list[i][1] + 500,
-                    #                               self.points_list[0][0] + 500,
-                    #                               -1 * self.points_list[0][1] + 500,
-                    #                               fill=line_color, tags=self.show_string)
-                    # self.graph_canvas.update()
-        else:
-            print("no")
-            for i in range(0, len(self.points_list)):
-                try:
-                    # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                    self.graph_canvas.create_line(self.points_list[i][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  self.points_list[i + 1][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i + 1][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  fill=line_color, tags=self.show_string,activewidth=5)
-                    self.graph_canvas.update()
-                    self.graph_frame.update()
-                except:
-                    self.graph_canvas.update()
-        self.on_line("f")
+        for points_index in range(len(self.points_list)):
+            try:
+                self.graph_canvas.create_line((self.points_list[points_index][0] *50) + 500 ,
+                                              -1*(self.points_list[points_index][1] * 50) + 500,
+                                              (self.points_list[points_index+1][0] * 50) + 500,
+                                              -1*(self.points_list[points_index+1][1] * 50) + 500,
+                                              fill = line_color)
+            except:
+                pass
+
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -383,219 +359,60 @@ class Main:
             colour_code += r.choice(self.hex_list)
         return colour_code
     def number_botton_pressed(self, botton):
-        if not self.open_bracket:
-            if self.adding_digites:
-                if self.is_negative:
-                    num = (int(self.Equation_list.pop()) * 10 + int(botton["text"])) * -1
-                    self.Equation_list.append(num)
-                else:
-                    num = int(self.Equation_list.pop()) * 10 + botton["text"]
-                    self.Equation_list.append(num)
-                show_string_new = ""
-                for i in self.Equation_list:
-                    if i == "power":
-                        show_string_new += "**"
-                    elif i == "multiply":
-                        show_string_new += "*"
-                    elif i == "divide":
-                        show_string_new += "/"
-                    elif i == "add":
-                        show_string_new += "+"
-                    elif i == "subtract":
-                        show_string_new += "-"
-                    else:
-                        show_string_new += str(i)
-
-                self.show_string = show_string_new
-            else:
-                if self.is_negative:
-                    num = int(botton["text"]) * -1
-                    self.Equation_list.append(num)
-                else:
-                    num = botton["text"]
-                    self.Equation_list.append(botton["text"])
-                self.adding_digites = True
-                self.show_string += str(num)
-            self.equation_label.config(text=self.show_string)
-            self.before_bracket = self.show_string
+        if self.is_negative:
+            self.equation += "("
+            self.equation += "-"
+            self.equation += str(botton["text"])
+            self.equation += ")"
         else:
-            if self.adding_digites:
-                if self.is_negative:
-                    num = (int(self.bracket_list.pop()) * 10 + int(botton["text"])) * -1
-                    self.bracket_list.append(num)
-                else:
-                    num = int(self.bracket_list.pop()) * 10 + botton["text"]
-                    self.bracket_list.append(num)
-                show_string_new = ""
-                for i in self.bracket_list:
-                    if i == "power":
-                        show_string_new += "**"
-                    elif i == "multiply":
-                        show_string_new += "*"
-                    elif i == "divide":
-                        show_string_new += "/"
-                    elif i == "add":
-                        show_string_new += "+"
-                    elif i == "subtract":
-                        show_string_new += "-"
-                    else:
-                        show_string_new += str(i)
-                self.show_string = self.before_bracket+"("
-                self.show_string += show_string_new
-            else:
-                if self.is_negative:
-                    num = int(botton["text"]) * -1
-                    self.bracket_list.append(num)
-                else:
-                    num = botton["text"]
-                    self.bracket_list.append(botton["text"])
-                self.adding_digites = True
-                self.show_string += str(num)
-            self.equation_label.config(text=self.show_string)
+            self.equation += str(botton["text"])
+
+        self.equation_label.config(text=self.equation)
     def power_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("power")
-        else:
-            self.bracket_list.append("power")
-
-        self.show_string += "**"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+        self.equation += "**"
+        self.equation_label.config(text = self.equation)
     def divide_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("divide")
-        else:
-            self.bracket_list.append("divide")
-        self.show_string += "/"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+        self.equation += "/"
+        self.equation_label.config(text=self.equation)
     def multiply_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("multiply")
-        else:
-            self.bracket_list.append("multiply")
-        self.show_string += "*"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+        self.equation += "*"
+        self.equation_label.config(text=self.equation)
     def add_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("add")
-        else:
-            self.bracket_list.append("add")
-        self.show_string += "+"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+        self.equation += "+"
+        self.equation_label.config(text=self.equation)
     def subtract_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("subtract")
-        else:
-            self.bracket_list.append("subtract")
-        self.show_string += "-"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+        self.equation += "-"
+        self.equation_label.config(text=self.equation)
     def x_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("x")
+        if self.is_negative:
+            self.equation += "("
+            self.equation += "-"
+            self.equation += "x"
+            self.equation += ")"
+
         else:
-            self.bracket_list.append("x")
-        self.show_string += "x"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+            self.equation += "x"
+        self.equation_label.config(text=self.equation)
     def y_botton_pressed(self):
-        if not self.open_bracket:
-            self.Equation_list.append("y")
+        if self.is_negative:
+            self.equation += "("
+            self.equation += "-"
+            self.equation += "y"
+            self.equation += ")"
+
         else:
-            self.bracket_list.append("y")
-        self.show_string += "y"
-        self.equation_label.config(text=self.show_string)
-        self.adding_digites = False
+            self.equation += "y"
+        self.equation_label.config(text=self.equation)
     def polt_botton_pressed(self):
-        self.show_on_top = self.show_string
-        print(self.show_on_top,self.Equation_list)
-
-
-        self.plot(self.Equation_list)
-
-        self.Equation_list = []
-        self.bracket_list = []
-        self.open_bracket = False
+        self.plot(self.equation)
         self.equation_label.config(text = "")
-        self.show_string = ""
-        self.adding_digites = False
+        self.equation = ""
     def delete_botton_pressed(self):
-        show_string_new = ''
-        found = False
-
-        if not self.open_bracket:
-            if type(self.Equation_list[-1]) == type(1):
-                if self.Equation_list[-1] / 10 > 10:
-                    pass
-                else:
-                    self.adding_digites = False
-            try:
-                self.Equation_list.pop()
-            except:
-                pass
-            for i in self.Equation_list:
-                if i == "power":
-                    show_string_new += "**"
-                elif i == "multiply":
-                    show_string_new += "*"
-                elif i == "divide":
-                    show_string_new += "/"
-                elif i == "add":
-                    show_string_new += "+"
-                elif i == "subtract":
-                    show_string_new += "-"
-                else:
-                    show_string_new += str(i)
-
-            self.show_string = show_string_new
-            self.equation_label.config(text=self.show_string)
-        else:
-            self.before_bracket = ""
-            for i in self.Equation_list:
-                if i == "power":
-                    self.before_bracket += "**"
-                elif i == "multiply":
-                    self.before_bracket += "*"
-                elif i == "divide":
-                    self.before_bracket += "/"
-                elif i == "add":
-                    self.before_bracket += "+"
-                elif i == "subtract":
-                    self.before_bracket += "-"
-                else:
-                    self.before_bracket += str(i)
-            self.before_bracket += '('
-            try:
-                if type(self.bracket_list[-1]) == type(1):
-                    if self.bracket_list[-1] / 10 > 10:
-                        pass
-                    else:
-                        self.adding_digites = False
-            except:
-                pass
-            try:
-                self.bracket_list.pop()
-            except:
-                self.open_bracket = False
-            for i in self.bracket_list:
-                if i == "power":
-                    show_string_new += "**"
-                elif i == "multiply":
-                    show_string_new += "*"
-                elif i == "divide":
-                    show_string_new += "/"
-                elif i == "add":
-                    show_string_new += "+"
-                elif i == "subtract":
-                    show_string_new += "-"
-                else:
-                    show_string_new += str(i)
-            self.show_string = self.before_bracket
-            self.show_string += show_string_new
-            self.equation_label.config(text=self.show_string)
+        new = ""
+        for i in range(len(self.equation)-1):
+            new+=self.equation[i]
+        self.equation = new
+        self.equation_label.config(text=self.equation)
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
@@ -603,20 +420,14 @@ class Main:
         else:
             self.is_negative = True
             self.botton_num_negative.config(bg = "light gray",fg="black")
-        self.adding_digites = False
-    def open_bracket_botton_pressed(self):
-        self.adding_digites = False
 
-        self.open_bracket = True
-        self.show_string += "("
-        self.equation_label.config(text=self.show_string)
+
+    def open_bracket_botton_pressed(self):
+        self.equation += "("
+        self.equation_label.config(text=self.equation)
     def close_bracket_botton_presses(self):
-        self.open_bracket = False
-        self.show_string += ")"
-        self.adding_digites = False
-        self.equation_label.config(text=self.show_string)
-        self.Equation_list.append(self.bracket_list)
-        self.bracket_list = []
+        self.equation += ")"
+        self.equation_label.config(text=self.equation)
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=self.SCREEN_WIDHT*(1000/1920), y=self.SCREEN_HEIGHT*(450/1080))
