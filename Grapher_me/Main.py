@@ -308,41 +308,16 @@ class Main:
         self.create_new_object_menu(self.equation,self.menu_frame,line_color)
         print(self.points_list)
 
-        if "x" in equation and "y" in equation:
-            print("yes")
-            for i in range(0, len(self.points_list)):
-                try:
-                    # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                    self.graph_canvas.create_line(self.points_list[i][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  self.points_list[i + 1][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i + 1][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  fill=line_color, tags=self.show_string)
-                    self.graph_canvas.update()
-                    self.graph_frame.update()
-                except:
-                    pass
-                    # self.graph_canvas.create_line(self.points_list[i][0] + 500,
-                    #                               -1 * self.points_list[i][1] + 500,
-                    #                               self.points_list[0][0] + 500,
-                    #                               -1 * self.points_list[0][1] + 500,
-                    #                               fill=line_color, tags=self.show_string)
-                    # self.graph_canvas.update()
-        else:
-            print("no")
-            for i in range(0, len(self.points_list)):
-                try:
-                    # correction for the shift in orign from tk's (0,0) to tk's (500,500)
-                    self.graph_canvas.create_line(self.points_list[i][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  self.points_list[i + 1][0] + self.SCREEN_WIDHT*(500/1920),
-                                                  -1 * self.points_list[i + 1][1] + self.SCREEN_HEIGHT*(500/1080),
-                                                  fill=line_color, tags=self.show_string,activewidth=5)
-                    self.graph_canvas.update()
-                    self.graph_frame.update()
-                except:
-                    self.graph_canvas.update()
-        self.on_line("f")
+        for points_index in range(len(self.points_list)):
+            try:
+                self.graph_canvas.create_line((self.points_list[points_index][0] *50) + 500 ,
+                                              -1*(self.points_list[points_index][1] * 50) + 500,
+                                              (self.points_list[points_index+1][0] * 50) + 500,
+                                              -1*(self.points_list[points_index+1][1] * 50) + 500,
+                                              fill = line_color)
+            except:
+                pass
+
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -387,10 +362,10 @@ class Main:
         if self.is_negative:
             self.equation += "("
             self.equation += "-"
-            self.equation += botton["text"]
+            self.equation += str(botton["text"])
             self.equation += ")"
         else:
-            self.equation += botton["text"]
+            self.equation += str(botton["text"])
 
         self.equation_label.config(text=self.equation)
     def power_botton_pressed(self):
@@ -431,7 +406,7 @@ class Main:
     def polt_botton_pressed(self):
         self.plot(self.equation)
         self.equation_label.config(text = "")
-        self.show_string = ""
+        self.equation = ""
     def delete_botton_pressed(self):
         new = ""
         for i in range(len(self.equation)-1):

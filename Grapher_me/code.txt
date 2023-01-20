@@ -1,4 +1,8 @@
 
+        for points in self.points_list:
+            coords_x = points[0]*250
+            coords_y = points[1]*250
+
 class Calculator:
     def __init__(self, equation, units, sub_units):
         self.Y_EQUATION = equation

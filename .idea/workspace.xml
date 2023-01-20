@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="Changing calculator">
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="Change Plot accordingly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/calculator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grapher_me/code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/code.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674136055512</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Change Plot accordingly">
+      <created>1674147164188</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1674147164188</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,6 +430,7 @@
     <MESSAGE value="scaling" />
     <MESSAGE value="added BRACKETSSSSSSSSSSSSSS" />
     <MESSAGE value="Changing calculator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing calculator" />
+    <MESSAGE value="Change Plot accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change Plot accordingly" />
   </component>
 </project>
