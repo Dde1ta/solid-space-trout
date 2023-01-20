@@ -20,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Main_graph" />
+        <entry key="$PROJECT_DIR$" value="Grapher-V2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -339,28 +339,35 @@
       <option name="project" value="LOCAL" />
       <updated>1672706557406</updated>
     </task>
-    <task id="LOCAL-00037" summary="fixed  resolution">
-      <created>1672721727513</created>
+    <task id="LOCAL-00037" summary="Changing calculator">
+      <created>1674130839553</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1672721727513</updated>
+      <updated>1674130839553</updated>
     </task>
-    <task id="LOCAL-00038" summary="fixed  resolution">
-      <created>1673075270484</created>
+    <task id="LOCAL-00038" summary="Changing calculator">
+      <created>1674136055512</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1673075270484</updated>
+      <updated>1674136055512</updated>
     </task>
     <task id="LOCAL-00039" summary="Change Plot accordingly">
-      <created>1674213383603</created>
+      <created>1674147164188</created>
       <option name="number" value="00039" />
       <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1674213383604</updated>
+      <updated>1674147164188</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Change Plot accordingly">
+      <created>1674212340339</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1674212340339</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +431,7 @@
     <MESSAGE value="adding bracket" />
     <MESSAGE value="scaling" />
     <MESSAGE value="added BRACKETSSSSSSSSSSSSSS" />
-    <MESSAGE value="fixed  resolution" />
+    <MESSAGE value="Changing calculator" />
     <MESSAGE value="Change Plot accordingly" />
     <option name="LAST_COMMIT_MESSAGE" value="Change Plot accordingly" />
   </component>
