@@ -173,7 +173,7 @@ class Main:
                                         y=self.SCREEN_HEIGHT*(280/1080),
                                         width=self.SCREEN_WIDHT*(184 / 1920),
                                         height=self.SCREEN_HEIGHT*(100/1080))
-        self.botton_decimel = tk.Button(frame, text=".")
+        self.botton_decimel = tk.Button(frame, text=".",command=self.decimal_button_pressed)
         self.botton_decimel.place(x=self.SCREEN_WIDHT*(552 / 1920),
                                   y=self.SCREEN_HEIGHT*(380/1080),
                                   width=self.SCREEN_WIDHT*(184 / 1920),
@@ -306,7 +306,7 @@ class Main:
                 self.tag_string+=char
 
         self.create_new_object_menu(self.equation,self.menu_frame,line_color)
-        print(self.points_list)
+        print(self.object_dic)
 
         for points_index in range(len(self.points_list)):
             try:
@@ -314,7 +314,7 @@ class Main:
                                               -1*(self.points_list[points_index][1] * 50) + 500,
                                               (self.points_list[points_index+1][0] * 50) + 500,
                                               -1*(self.points_list[points_index+1][1] * 50) + 500,
-                                              fill = line_color)
+                                              fill = line_color,tags=self.equation)
             except:
                 pass
 
@@ -407,12 +407,14 @@ class Main:
         self.plot(self.equation)
         self.equation_label.config(text = "")
         self.equation = ""
+
     def delete_botton_pressed(self):
         new = ""
         for i in range(len(self.equation)-1):
             new+=self.equation[i]
         self.equation = new
         self.equation_label.config(text=self.equation)
+
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
@@ -421,17 +423,23 @@ class Main:
             self.is_negative = True
             self.botton_num_negative.config(bg = "light gray",fg="black")
 
-
     def open_bracket_botton_pressed(self):
         self.equation += "("
         self.equation_label.config(text=self.equation)
+
     def close_bracket_botton_presses(self):
         self.equation += ")"
         self.equation_label.config(text=self.equation)
+
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=self.SCREEN_WIDHT*(1000/1920), y=self.SCREEN_HEIGHT*(450/1080))
         self.menu_frame.place(x = self.SCREEN_WIDHT*(1000/1920), y= 0)
+
+    def decimal_button_pressed(self):
+        self.equation += "."
+        self.equation_label.config(text = self.equation)
+
 
 if __name__ == "__main__":
     root = tk.Tk()
