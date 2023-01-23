@@ -21,12 +21,11 @@ class Calculator:
         if "x" in string and "y" in string:
             to_return = self.solve_final_x_y(string)
         elif "y" in string:
-            to_return = self.solve_final_x(string,function_dic)
-        else:
             to_return = self.solve_final_y(string)
+        else:
+            to_return = self.solve_final_x(string,function_dic)
 
         return to_return
-
     def gif(self,string,index,n):
         og_string = string
         new_string = ""
@@ -42,6 +41,7 @@ class Calculator:
                 open_ = False
                 break
 
+
         for s in operation_string:
             if s == "x" or s == "y":
                 string_to_eval += "("
@@ -51,7 +51,8 @@ class Calculator:
             else:
                 string_to_eval += s
 
-        answer = math.floor(eval(string_to_eval))
+
+        answer = math.floor(eval(string_to_eval+"+ 0"))
 
         for i in range(len(og_string)):
             if i == index:
@@ -93,21 +94,21 @@ class Calculator:
             else:
                 string_to_eval += s
 
-        answer = math.fabs(eval(string_to_eval))
+        answer = eval(string_to_eval)
 
         for i in range(len(og_string)):
             if i == index:
                 new_string += str(answer)
-            if og_string[i] == "[":
+            if og_string[i] == "<":
                 open_ = True
             else:
                 if open_:
                     pass
                 else:
                     new_string += str(og_string[i])
-                if og_string[i] == "[":
+                if og_string[i] == "<":
                     open_ = True
-                if og_string[i] == "]":
+                if og_string[i] == ">":
                     open_ = False
 
         return new_string
@@ -115,8 +116,17 @@ class Calculator:
         points_list = []
         for x in range(self._x_px,self.x_px+1):
             string_to_eval = ""
+            string_ = string
+            n_of_change = 0
+            for function_ in function_dic:
+
+                if function_ == "GIF":
+                    string_ = self.gif(string_,function_dic[function_],x)
+                elif function_ == "MOD":
+                    string_ = self.gif(string_,function_dic[function_],x)
+            print(string_, function_dic[function_], x)
             try:
-                for s in string:
+                for s in string_:
                     if s == "x":
                         string_to_eval += "("
                         string_to_eval += str(x / 50)
@@ -174,6 +184,6 @@ class Calculator:
 
 if __name__ == "__main__":
     cal = Calculator()
-    # points = cal.solve("([x]**2+|x|**2)",{'GIF':0,'MOD':7})
-    s = cal.gif("5+[x+1]**2",2,102)
-    print(s)
+    points = cal.solve("[x]**2+<x>**2",{'GIF':0,'MOD':7})
+
+    print(points)

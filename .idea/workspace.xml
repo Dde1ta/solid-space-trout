@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="removed a rando file">
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="adding functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/calculator.py" afterDir="false" />
     </list>
@@ -392,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674319455137</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="adding functions">
+      <created>1674406817855</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1674406817855</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -460,6 +467,7 @@
     <MESSAGE value="Change Plot accordingly" />
     <MESSAGE value="fixed monior bugs" />
     <MESSAGE value="removed a rando file" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed a rando file" />
+    <MESSAGE value="adding functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding functions" />
   </component>
 </project>
