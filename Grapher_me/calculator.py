@@ -16,6 +16,7 @@ class Calculator:
         self._x_px = -500
         self.x_px = 500
         self.pixles = 25
+        self.change_in_index = 0
 
     def solve(self,string,function_dic):
         if "x" in string and "y" in string:
@@ -53,12 +54,17 @@ class Calculator:
 
 
         answer = math.floor(eval(string_to_eval+"+ 0"))
+        self.change_in_index += len(operation_string) - len(str(answer))
 
         for i in range(len(og_string)):
-            if i == index:
-                new_string += str(answer)
+
+
             if og_string[i] == "[":
                 open_ = True
+            if i == index:
+                new_string += "("
+                new_string += str(answer)
+                new_string += ")"
             else:
                 if open_:
                     pass
@@ -77,11 +83,11 @@ class Calculator:
         operation_string = ""
         open_ = False
         for i in string:
-            if open_ and i != "]":
+            if open_ and i != ">":
                 operation_string += i
-            if i == "[":
+            if i == "<":
                 open_ = True
-            elif i == "]":
+            elif i == ">":
                 open_ = False
                 break
 
@@ -94,13 +100,20 @@ class Calculator:
             else:
                 string_to_eval += s
 
-        answer = eval(string_to_eval)
+        if eval(string_to_eval) >0 :
+            answer = eval(string_to_eval)
+        else:
+            answer = eval(string_to_eval)*-1
 
         for i in range(len(og_string)):
-            if i == index:
-                new_string += str(answer)
+
             if og_string[i] == "<":
                 open_ = True
+            if i == index:
+                new_string += "("
+                new_string += str(answer)
+                new_string += ")"
+
             else:
                 if open_:
                     pass
@@ -111,20 +124,22 @@ class Calculator:
                 if og_string[i] == ">":
                     open_ = False
 
+        self.change_in_index += len(operation_string) - len(str(answer))
+
         return new_string
     def solve_final_x(self,string,function_dic):
         points_list = []
         for x in range(self._x_px,self.x_px+1):
+            self.change_in_index = 0
             string_to_eval = ""
             string_ = string
             n_of_change = 0
             for function_ in function_dic:
-
                 if function_ == "GIF":
-                    string_ = self.gif(string_,function_dic[function_],x)
+                    string_ = self.gif(string_,function_dic[function_]-self.change_in_index+1,x)
                 elif function_ == "MOD":
-                    string_ = self.gif(string_,function_dic[function_],x)
-            print(string_, function_dic[function_], x)
+                    string_ = self.mod(string_,function_dic[function_]-self.change_in_index+1,x)
+
             try:
                 for s in string_:
                     if s == "x":
@@ -135,11 +150,12 @@ class Calculator:
                     else:
                         string_to_eval += s
                 answer = eval(string_to_eval)
+
+
                 points_list.append([x / 50, answer])
             except:
                 pass
         return points_list
-
     def solve_final_y(self,string):
         points_list = []
         for y in range(self._x_px,self.x_px+1):
@@ -157,7 +173,6 @@ class Calculator:
             except:
                 pass
         return points_list
-
     def solve_final_x_y(self,string):
         points_list = []
         for x in range(self._x_px,self.x_px+1):
@@ -184,6 +199,6 @@ class Calculator:
 
 if __name__ == "__main__":
     cal = Calculator()
-    points = cal.solve("[x]**2+<x>**2",{'GIF':0,'MOD':7})
+    points = cal.solve("[x+1]**2+<x>**2",{"GIF":0,"MOD":8})
 
     print(points)

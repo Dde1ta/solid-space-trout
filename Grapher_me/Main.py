@@ -288,7 +288,7 @@ class Main:
         :return: the list of points
         """
         cal = Cal()
-        return cal.solve(equation)
+        return cal.solve(equation,{1:1})
     def plot(self,equation):
         """
         Plots the points in the list on the graph
