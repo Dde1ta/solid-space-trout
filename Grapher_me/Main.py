@@ -61,11 +61,14 @@ class Main:
     def create_new_object_menu(self,string,frame,color):
         n = self.number
         self.object_dic[string] = [tk.Label(frame,bg = color),
-                                   tk.Label(frame,text = string),
+                                   tk.Button(frame,text = string,command = lambda : self.insert_string(string)),
                                    tk.Button(frame,text = "delete",command = lambda : self.delete_row_in_menu(string)),
                                    self.number]
         self.number += 1
         self.place_menu_items()
+    def insert_string(self,string):
+        self.equation_label.config(text = string)
+        self.equation = string
     def place_menu_items(self):
 
         for id in self.object_dic:

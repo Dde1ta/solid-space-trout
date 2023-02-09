@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="fix function inserting">
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="fixed function inserting">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19-01-2023_08_17_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19-01-2023_08_17__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grapher_me/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/calculator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,13 +56,14 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/DIVYANSH MANHAS/Documents/GitHub/solid-space-trout",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="solid-space-trout" />
@@ -407,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674445198582</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="fixed function inserting">
+      <created>1674578122933</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1674578122933</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,6 +486,7 @@
     <MESSAGE value="removed a rando file" />
     <MESSAGE value="adding functions" />
     <MESSAGE value="fix function inserting" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix function inserting" />
+    <MESSAGE value="fixed function inserting" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed function inserting" />
   </component>
 </project>
