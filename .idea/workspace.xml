@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="fixed function inserting">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19-01-2023_08_17_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19-01-2023_08_17__Changes_.xml" beforeDir="false" />
+    <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="Now can press the label">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/solid-space-trout.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/solid-space-trout.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grapher_me/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grapher_me/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/experiment.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Grapher_me/Main.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/Grapher_me/calculator.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Grapher_me/experiment.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/Grapher_me/inputer.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/Grapher_me/potter.py" root0="SKIP_INSPECTION" />
   </component>
@@ -56,14 +58,14 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/DIVYANSH MANHAS/Documents/GitHub/solid-space-trout",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DIVYANSH MANHAS/Documents/GitHub/solid-space-trout&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="solid-space-trout" />
@@ -416,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674578122933</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Now can press the label">
+      <created>1675959908563</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1675959908568</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,6 +496,7 @@
     <MESSAGE value="adding functions" />
     <MESSAGE value="fix function inserting" />
     <MESSAGE value="fixed function inserting" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed function inserting" />
+    <MESSAGE value="Now can press the label" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now can press the label" />
   </component>
 </project>

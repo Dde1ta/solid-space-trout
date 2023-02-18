@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/solid-space-trout.iml" filepath="$PROJECT_DIR$/.idea/solid-space-trout.iml" />
+      <module fileurl="file://D:/vlc/.idea/vlc.iml" filepath="D:/vlc/.idea/vlc.iml" />
     </modules>
   </component>
 </project>

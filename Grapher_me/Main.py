@@ -1,5 +1,6 @@
 import tkinter as tk
 from potter import Graph_frame
+from pynput.keyboard  import Key, Listener
 import pyautogui as pa
 from calculator import Calculator as Cal
 from inputer import Inputer_frame
@@ -20,6 +21,7 @@ class Main:
         self.variables_for_inputer()
         self.variables_for_graphs_menu()
         self.place_frames()
+        self.listen_for_key()
     def variables_for_graphs(self):
         self.HEIGHT = self.SCREEN_HEIGHT*(1000/1080)
         self.WIDHT = self.SCREEN_WIDHT*(1000/1920)
@@ -320,7 +322,6 @@ class Main:
                                               fill = line_color,tags=self.equation)
             except:
                 pass
-
     def on_canvas(self,cords):
         """
         Checks for the location of the mouse
@@ -410,14 +411,12 @@ class Main:
         self.plot(self.equation)
         self.equation_label.config(text = "")
         self.equation = ""
-
     def delete_botton_pressed(self):
         new = ""
         for i in range(len(self.equation)-1):
             new+=self.equation[i]
         self.equation = new
         self.equation_label.config(text=self.equation)
-
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
@@ -425,24 +424,32 @@ class Main:
         else:
             self.is_negative = True
             self.botton_num_negative.config(bg = "light gray",fg="black")
-
     def open_bracket_botton_pressed(self):
         self.equation += "("
         self.equation_label.config(text=self.equation)
-
     def close_bracket_botton_presses(self):
         self.equation += ")"
         self.equation_label.config(text=self.equation)
-
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=self.SCREEN_WIDHT*(1000/1920), y=self.SCREEN_HEIGHT*(450/1080))
         self.menu_frame.place(x = self.SCREEN_WIDHT*(1000/1920), y= 0)
-
     def decimal_button_pressed(self):
         self.equation += "."
         self.equation_label.config(text = self.equation)
-
+    # def listen_for_key(self):
+    #     with Listener(
+    #             on_press=self.on_press,
+    #             on_release=self.on_release) as listener:
+    #         listener.join()
+    # def on_press(self,key):
+    #     num_pad_numbers = [96,97,98,99,100,101,102,103,104,105]
+    #     if key in ['x','y','1','2','3','4','5','6','7','8','9','0','/','*','-','+',105,102,96,110,97,98,99,100,101,102]:
+    #         if key in num_pad_numbers:
+    #             number = num_pad_numbers.index(key)
+    #             print(number)
+    # def on_release(self,key):
+    #     pass
 
 if __name__ == "__main__":
     root = tk.Tk()
