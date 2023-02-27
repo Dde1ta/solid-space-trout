@@ -21,7 +21,7 @@ class Main:
         self.variables_for_inputer()
         self.variables_for_graphs_menu()
         self.place_frames()
-        self.listen_for_key()
+       #self.listen_for_key()
     def variables_for_graphs(self):
         self.HEIGHT = self.SCREEN_HEIGHT*(1000/1080)
         self.WIDHT = self.SCREEN_WIDHT*(1000/1920)
@@ -57,7 +57,7 @@ class Main:
         self.bracket_list = []
         self.before_bracket = ""
     def variables_for_graphs_menu(self):
-        self.menu_frame = tk.Frame(self.master,height = self.SCREEN_HEIGHT*(480/1080),width = self.SCREEN_WIDHT*(920/1920),bg = "black" )
+        self.menu_frame = tk.Frame(self.master,height = self.SCREEN_HEIGHT*(465/1080),width = self.SCREEN_WIDHT*(920/1920),bg = "black" )
         self.number = 0
         self.object_dic = {}
     def create_new_object_menu(self,string,frame,color):
@@ -69,7 +69,7 @@ class Main:
         self.number += 1
         self.place_menu_items()
     def insert_string(self,string):
-        self.equation_label.config(text = string)
+        self.equation_entry.config(text = string)
         self.equation = string
     def place_menu_items(self):
 
@@ -108,10 +108,10 @@ class Main:
         :param frame: The inputer frame
         :return:
         """
-        self.equation_label = tk.Label(frame,bg = "black",fg = "white")
-        self.equation_label.place(x=0, y=0,
+        self.equation_entry = tk.Entry(frame, bg ="black", fg ="white",borderwidth=5,font = ("Helvetica", "30"))
+        self.equation_entry.place(x=0, y=15,
                                   width=self.SCREEN_WIDHT*(920 / 1920),
-                                  height=self.SCREEN_HEIGHT*(80/1080))
+                                  height=self.SCREEN_HEIGHT*(65/1080))
         self.botton1 = tk.Button(frame, text=1, command=lambda: self.number_botton_pressed(self.botton1))
         self.botton1.place(x=0,
                            y=self.SCREEN_HEIGHT*(180/1080),
@@ -363,6 +363,7 @@ class Main:
             colour_code += r.choice(self.hex_list)
         return colour_code
     def number_botton_pressed(self, botton):
+        self.equation = self.equation_entry.get()
         if self.is_negative:
             self.equation += "("
             self.equation += "-"
@@ -371,23 +372,35 @@ class Main:
         else:
             self.equation += str(botton["text"])
 
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def power_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "**"
-        self.equation_label.config(text = self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def divide_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "/"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def multiply_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "*"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def add_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "+"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def subtract_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "-"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def x_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         if self.is_negative:
             self.equation += "("
             self.equation += "-"
@@ -396,8 +409,10 @@ class Main:
 
         else:
             self.equation += "x"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def y_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         if self.is_negative:
             self.equation += "("
             self.equation += "-"
@@ -406,17 +421,21 @@ class Main:
 
         else:
             self.equation += "y"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def polt_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.plot(self.equation)
-        self.equation_label.config(text = "")
+        self.equation_entry.delete(0, tk.END)
         self.equation = ""
     def delete_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         new = ""
         for i in range(len(self.equation)-1):
             new+=self.equation[i]
         self.equation = new
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def negative_botton_pressed(self):
         if self.is_negative:
             self.is_negative = False
@@ -425,18 +444,24 @@ class Main:
             self.is_negative = True
             self.botton_num_negative.config(bg = "light gray",fg="black")
     def open_bracket_botton_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "("
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def close_bracket_botton_presses(self):
+        self.equation = self.equation_entry.get()
         self.equation += ")"
-        self.equation_label.config(text=self.equation)
+        self.equation_entry.delete(0, tk.END)
+        self.equation_entry.insert(0, self.equation)
     def place_frames(self):
         self.graph_frame.place(x=0,y=0)
         self.input_frame.place(x=self.SCREEN_WIDHT*(1000/1920), y=self.SCREEN_HEIGHT*(450/1080))
         self.menu_frame.place(x = self.SCREEN_WIDHT*(1000/1920), y= 0)
     def decimal_button_pressed(self):
+        self.equation = self.equation_entry.get()
         self.equation += "."
-        self.equation_label.config(text = self.equation)
+        self.equation_entry.delete(0,tk.END)
+        self.equation_entry.insert(0,self.equation)
     # def listen_for_key(self):
     #     with Listener(
     #             on_press=self.on_press,
