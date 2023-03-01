@@ -69,7 +69,7 @@ class Main:
         self.number += 1
         self.place_menu_items()
     def insert_string(self,string):
-        self.equation_entry.config(text = string)
+        self.equation_entry.insert(string)
         self.equation = string
     def place_menu_items(self):
 
