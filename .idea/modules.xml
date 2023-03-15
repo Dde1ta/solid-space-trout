@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Machine-learning/.idea/Machine-learning.iml" filepath="$PROJECT_DIR$/../Machine-learning/.idea/Machine-learning.iml" />
+      <module fileurl="file://D:/math/.idea/math.iml" filepath="D:/math/.idea/math.iml" />
+      <module fileurl="file://D:/ml/.idea/ml.iml" filepath="D:/ml/.idea/ml.iml" />
+      <module fileurl="file://D:/myMacro/.idea/myMacro.iml" filepath="D:/myMacro/.idea/myMacro.iml" />
+      <module fileurl="file://D:/pythonProject1/.idea/pythonProject1.iml" filepath="D:/pythonProject1/.idea/pythonProject1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/solid-space-trout.iml" filepath="$PROJECT_DIR$/.idea/solid-space-trout.iml" />
       <module fileurl="file://D:/vlc/.idea/vlc.iml" filepath="D:/vlc/.idea/vlc.iml" />
     </modules>

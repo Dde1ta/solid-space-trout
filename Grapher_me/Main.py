@@ -69,7 +69,7 @@ class Main:
         self.number += 1
         self.place_menu_items()
     def insert_string(self,string):
-        self.equation_entry.insert(string)
+        self.equation_entry.insert(0,string)
         self.equation = string
     def place_menu_items(self):
 
@@ -301,6 +301,7 @@ class Main:
         :return:
         """
         self.points_list = self.calculate(equation)
+        print(equation)
         line_color = self.random_color()
         n= 0
         self.tag_string = ""

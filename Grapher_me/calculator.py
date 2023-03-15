@@ -128,6 +128,7 @@ class Calculator:
 
         return new_string
     def solve_final_x(self,string,function_dic):
+        print("here")
         points_list = []
         for x in range(self._x_px,self.x_px+1):
             self.change_in_index = 0
@@ -152,7 +153,10 @@ class Calculator:
                 answer = eval(string_to_eval)
 
 
+
                 points_list.append([x / 50, answer])
+                #print(string_to_eval,"+",answer)
+                #input()
             except:
                 pass
         return points_list
@@ -176,7 +180,8 @@ class Calculator:
     def solve_final_x_y(self,string):
         points_list = []
         for x in range(self._x_px,self.x_px+1):
-            for y in range(self._x_px, self.x_px + 1):
+            print(x)
+            for y in range(self._x_px,0):
                 string_to_eval = ""
                 try:
                     for s in string:
@@ -195,10 +200,30 @@ class Calculator:
                         points_list.append([x / 50, y / 50])
                 except:
                     pass
+        for x in range(self._x_px, self.x_px + 1):
+            print(x)
+            for y in range(0, self.x_px + 1):
+                string_to_eval = ""
+                try:
+                    for s in string:
+                        if s == "y":
+                            string_to_eval += "("
+                            string_to_eval += str(y / 50)
+                            string_to_eval += ")"
+                        elif s == "x":
+                            string_to_eval += "("
+                            string_to_eval += str(x / 50)
+                            string_to_eval += ")"
+                        else:
+                            string_to_eval += s
+                    answer = eval(string_to_eval)
+                    if answer == 0:
+                        points_list.append([x / 50, y / 50])
+                except:
+                    pass
+        print(points_list)
         return points_list
 
 if __name__ == "__main__":
     cal = Calculator()
-    points = cal.solve("[x+1]**2+<x>**2",{"GIF":0,"MOD":8})
-
-    print(points)
+    print(cal.solve('x**(1/3)', {}))

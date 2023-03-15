@@ -7,5 +7,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="vlc" />
+    <orderEntry type="module" module-name="Machine-learning" />
+    <orderEntry type="module" module-name="pythonProject1" />
+    <orderEntry type="module" module-name="ml" />
+    <orderEntry type="module" module-name="myMacro" />
+    <orderEntry type="module" module-name="math" />
   </component>
 </module>
