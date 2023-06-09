@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f0601e-a2dd-4e9a-acd9-b281e3e8ac4e" name="Changes" comment="fixed a button bug">
-      <change afterPath="$PROJECT_DIR$/../Machine-learning/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/solid-space-trout.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/solid-space-trout.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grapher_me/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grapher_me/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/calculator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grapher_me/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grapher_me/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670320544096</updated>
-    </task>
-    <task id="LOCAL-00001" summary="the code is now read able">
-      <created>1670322371115</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1670322371115</updated>
     </task>
     <task id="LOCAL-00002" summary="added inputer file">
       <created>1670323309949</created>
@@ -444,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677640439459</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="fixed a button bug">
+      <created>1678864373462</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1678864373463</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

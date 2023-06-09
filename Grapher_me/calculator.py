@@ -15,7 +15,7 @@ class Calculator:
     def __init__(self):
         self._x_px = -500
         self.x_px = 500
-        self.pixles = 25
+        self.pixles = 5
         self.change_in_index = 0
 
     def solve(self,string,function_dic):
