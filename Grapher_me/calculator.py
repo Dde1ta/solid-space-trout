@@ -151,9 +151,6 @@ class Calculator:
                     else:
                         string_to_eval += s
                 answer = eval(string_to_eval)
-
-
-
                 points_list.append([x / 50, answer])
                 #print(string_to_eval,"+",answer)
                 #input()
